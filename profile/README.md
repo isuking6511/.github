@@ -30,44 +30,6 @@ Zero-Trust Security 완벽 구현 (SPIFFE/SPIRE mTLS)
 40% 인프라 비용 절감 (ARM64 Graviton + 태그 기반 비용 추적)
 RTO 2분, RPO 2초 재해복구 목표 달성
 
-# 리소스 구성
-# AWS 인프라 리소스 정리
-## AWS 리소스 인벤토리
-
-| 리소스 타입        | 리전              | 리소스명                                                                                   | 설명                                      |
-|--------------------|-------------------|--------------------------------------------------------------------------------------------|-------------------------------------------|
-| EC2               | ap-northeast-2    | oliveyoung-dev-bastion-ec2, eks-cluster-prod-*                                              | 올리브영 개발/운영 EC2                     |
-| EC2               | sa-east-1         | security-ec2-br-01, security-ec2-br-02                                                     | 해외 공격 대응 인스턴스 (브라질)           |
-| VPC               | ap-northeast-2    | oliveyoung-dev, oliveyoung-prod                                                            | 개발계/운영계 VPC                          |
-| VPC               | ap-northeast-1    | dr-vpc-tokyo                                                                               | DR 전용 VPC (도쿄)                          |
-| Subnet            | ap-northeast-2    | oliveyoung-prod-pub-a, oliveyoung-prod-pri-a, oliveyoung-dev-pub …                        | 운영계/개발계 서브넷                        |
-| Subnet            | ap-northeast-1    | dr-public-a, dr-private-a, dr-public-c, dr-private-c                                      | DR 전용 서브넷                             |
-| Internet Gateway  | ap-northeast-2    | igw-prod, igw-dev                                                                          | 운영/개발 인터넷 게이트웨이                 |
-| Internet Gateway  | ap-northeast-1    | dr-igw                                                                                     | DR 인터넷 게이트웨이                       |
-| NAT Gateway       | ap-northeast-2    | nat-prod-a, nat-prod-c, nat-dev-a, nat-dev-c                                               | 운영/개발 NAT 게이트웨이                   |
-| NAT Gateway       | ap-northeast-1    | dr-nat-a                                                                                   | DR NAT 게이트웨이                          |
-| Routing Table     | ap-northeast-2    | rtb-prod-public, rtb-prod-private, rtb-dev-public, rtb-dev-private                         | 운영/개발 라우팅 테이블                     |
-| Routing Table     | ap-northeast-1    | dr-rtb-public, dr-rtb-private                                                              | DR 라우팅 테이블                           |
-| ECS (Fargate)     | ap-northeast-2    | ecs-cluster-prod, ecs-cluster-dev                                                          | 운영/개발 ECS 클러스터                      |
-| ECS (Fargate)     | ap-northeast-1    | dr-ecs-cluster, dr-fargate-service                                                         | DR ECS 클러스터                            |
-| ECR               | ap-northeast-2    | ecr-order-service, ecr-product-service                                                     | 운영 서비스 컨테이너 이미지 저장소          |
-| ECR               | ap-northeast-1    | dr-ecr-order-service, dr-ecr-product-service, ecr-replica-service                          | DR + 서울 ↔ 도쿄 이미지 복제               |
-| DynamoDB          | ap-northeast-2    | products-table, orders-table                                                               | 운영 DynamoDB 테이블                        |
-| DynamoDB          | ap-northeast-1    | dr-products-table, dr-orders-table                                                         | DR 글로벌 테이블 복제                       |
-| Lambda            | ap-northeast-2    | scaleout-lambda, ci-secret-scan                                                            | 운영 자동화 함수                            |
-| Lambda            | ap-northeast-1    | dr-scaleout-lambda, dr-replica-sync                                                        | DR 오토스케일/복제 동기화                   |
-| EventBridge       | ap-northeast-2    | event-rule-ci-scan, event-rule-logging                                                     | 이벤트 처리                                 |
-| EventBridge       | ap-northeast-1    | dr-on-button, dr-off-button, ecr-replica-deploy                                            | DR 전환 제어 및 복제 자동화                 |
-| ALB               | ap-northeast-2    | alb-prod, alb-dev                                                                          | 운영/개발 ALB                               |
-| ALB               | ap-northeast-1    | dr-alb                                                                                     | DR ALB                                     |
-| Route 53          | global            | route53-oliveyoung, route53-dr-failover                                                    | 서비스 도메인 관리, DR 페일오버 라우팅      |
-| IAM               | global            | tag-based-policy-dev, tag-based-policy-prod                                                | 태그 기반 접근제어 정책                     |
-| Cost Explorer     | global            | cost-explorer-default                                                                      | 비용 분석 툴                                |
-| AWS Budgets       | global            | budget-prod, budget-dev                                                                    | 예산 관리                                   |
-| SNS               | ap-northeast-2    | alarm-topic-dev, alarm-topic-prod                                                          | 알림용 SNS 주제                             |
-
-
-
 🏗️ 기술 스택
 Container Orchestration - Amazon EKS
 
