@@ -68,6 +68,7 @@ Grafana k6 Cloud: Performance Analytics
 
 🎮 Amazon EKS 클러스터 상세 구성
 클러스터 아키텍처
+```
 yamlEKS Cluster: prod
 ├── Control Plane: AWS Managed (Multi-AZ)
 ├── Data Plane:
@@ -88,6 +89,7 @@ yamlEKS Cluster: prod
     ├── Karpenter (Node Autoscaling)
     ├── HPA (Pod Horizontal Autoscaling)
     └── VPA (Pod Vertical Autoscaling)
+```
 주요 구성 요소
 1. Multi-Architecture Support
 
@@ -96,6 +98,7 @@ x86 Nodes: 레거시 Spring 애플리케이션 지원
 Node Affinity: 워크로드별 최적 노드 배치
 
 2. Network Configuration
+```
 yamlVPC CIDR: 10.1.0.0/16
 ├── Public Subnets:
 │   ├── 10.1.1.0/24 (AZ: ap-northeast-2a)
@@ -103,6 +106,7 @@ yamlVPC CIDR: 10.1.0.0/16
 └── Private Subnets:
     ├── 10.1.11.0/24 (AZ: ap-northeast-2a)
     └── 10.1.12.0/24 (AZ: ap-northeast-2c)
+```
 3. RBAC & Security
 
 OIDC Provider: EKS-IAM 통합
@@ -134,6 +138,7 @@ yamlsonarqube-analysis:
         -H 'Content-Type: application/json' \
         -d "{\"text\": \"📊 SonarQube Analysis Complete\\nBugs: $bugs\\nCoverage: $coverage%\"}"
 2. Secret Scanning
+```
 yamlsecret-detection:
   stage: code-analysis
   script:
@@ -150,7 +155,9 @@ yamlsecret-detection:
           -d '{"text":"🚨 Secret Detected and Disabled!"}'
         exit 1
       fi
+```
 3. Build & Push Stage
+```
 yamldocker-build:
   stage: build-and-push
   script:
@@ -163,7 +170,9 @@ yamldocker-build:
     # ECR Cross-Region 복제
     - aws ecr put-replication-configuration \
         --replication-configuration file://ecr-replication.json
+```
 4. GitOps Update
+```
 yamlupdate-manifest:
   stage: update-manifest
   script:
@@ -176,6 +185,7 @@ yamlupdate-manifest:
     - git push
   only:
     - main
+```
 🚀 부하 테스트 (Performance Testing)
 테스트 전략
 
@@ -184,6 +194,7 @@ yamlupdate-manifest:
 시나리오: 실제 사용자 패턴 시뮬레이션
 
 k6 테스트 시나리오
+```
 javascript// k6-load-test.js
 import http from 'k6/http';
 import { check, sleep } from 'k6';
@@ -204,7 +215,8 @@ export const options = {
     errors: ['rate<0.01'],             // 에러율 1% 미만
   },
 };
-
+```
+```
 export default function() {
   // 주문 생성 API 테스트
   const orderPayload = JSON.stringify({
@@ -236,8 +248,10 @@ export default function() {
   errorRate.add(res.status !== 201);
   sleep(1);
 }
+```
 Vegeta 스트레스 테스트
 bash# Vegeta Attack Script
+```
 echo "POST https://api.cloudwave10.shop/api/v1/orders" | \
   vegeta attack \
     -duration=300s \
@@ -253,10 +267,12 @@ echo "POST https://api.cloudwave10.shop/api/v1/orders" | \
     success_rate: .success,
     rps: .rate
   }'
+```
 테스트 결과
 성능 메트릭
 MetricTargetAchievedStatusThroughput10,000 TPS12,500 TPS✅P95 Latency< 100ms78ms✅P99 Latency< 200ms145ms✅Error Rate< 1%0.3%✅Availability99.99%99.995%✅
 Auto-scaling 검증
+```
 yamlHPA Scaling Events:
 ├── 0-2min: 2 pods (baseline)
 ├── 2-5min: 2→10 pods (scale-up)
@@ -268,6 +284,7 @@ Karpenter Node Scaling:
 ├── Initial: 5 nodes
 ├── Peak: 18 nodes (auto-provisioned)
 └── Final: 5 nodes (auto-deprovisioned)
+```
 🔐 Zero-Trust Security Architecture
 다층 보안 체계 (Prevention - Detection - Response)
 1️⃣ 예방 (Prevention)
@@ -306,6 +323,7 @@ GeoIP 변환 및 분석: Python Lambda를 활용한 실시간 위치 정보 매�
 
 💰 비용 최적화 전략
 태그 기반 비용 추적 시스템
+```
 yamlTagging Strategy:
 ├── Mandatory Tags:
 │   ├── Environment: [Dev, Staging, Production]
@@ -321,10 +339,12 @@ Cost Allocation Reports:
 ├── Daily: Team-based cost breakdown
 ├── Weekly: Service-based analysis
 └── Monthly: Executive dashboard
+```
 비용 절감 성과
 CategoryStrategySavingsComputeARM64 Graviton 채택40%Auto ScalingKarpenter 노드 최적화30%Spot InstancesDev/Staging 환경70%S3 StorageIntelligent-Tiering25%Data TransferVPC Endpoints20%
 🔄 고가용성 및 재해복구 (HA/DR)
 Multi-Region Architecture
+```
 yamlPrimary Region: ap-northeast-2 (Seoul)
 ├── EKS Cluster: Active
 ├── DynamoDB: Primary Tables
@@ -336,6 +356,7 @@ DR Region: ap-northeast-1 (Tokyo)
 ├── DynamoDB: Global Tables
 ├── Route53: Secondary Records
 └── Status: Standby (Auto-failover ready)
+```
 복구 목표 달성
 
 RTO (Recovery Time Objective): 2분
@@ -345,6 +366,7 @@ Data Sync: DynamoDB Global Tables 실시간 동기화
 
 📈 모니터링 및 관측성 (Observability)
 Prometheus + Grafana Stack
+```
 yamlMetrics Collection:
 ├── Infrastructure Metrics:
 │   ├── Node Exporter (System)
@@ -358,6 +380,7 @@ yamlMetrics Collection:
     ├── Falco Events
     ├── WAF Statistics
     └── GuardDuty Findings
+```
 주요 대시보드
 
 Business Dashboard: 실시간 매출, 주문량, 전환율
