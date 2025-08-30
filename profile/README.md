@@ -78,7 +78,7 @@ Grafana k6 Cloud: Performance Analytics
 🎮 Amazon EKS 클러스터 상세 구성
 클러스터 아키텍처
 ```
-yamlEKS Cluster: prod
+EKS Cluster: prod
 ├── Control Plane: AWS Managed (Multi-AZ)
 ├── Data Plane:
 │   ├── Node Group: app-nodes (ARM64)
@@ -133,7 +133,7 @@ yamlstages:
   - performance-test
 상세 구현
 1. Code Analysis Stage
-yamlsonarqube-analysis:
+sonarqube-analysis:
   stage: code-analysis
   script:
     - sonar-scanner -Dsonar.projectKey=$PROJECT_KEY
@@ -148,7 +148,7 @@ yamlsonarqube-analysis:
         -d "{\"text\": \"📊 SonarQube Analysis Complete\\nBugs: $bugs\\nCoverage: $coverage%\"}"
 2. Secret Scanning
 ```
-yamlsecret-detection:
+secret-detection:
   stage: code-analysis
   script:
     - detect-secrets scan --baseline .secrets.baseline
@@ -167,7 +167,7 @@ yamlsecret-detection:
 ```
 3. Build & Push Stage
 ```
-yamldocker-build:
+docker-build:
   stage: build-and-push
   script:
     # Multi-arch 빌드 (ARM64 + AMD64)
@@ -182,7 +182,7 @@ yamldocker-build:
 ```
 4. GitOps Update
 ```
-yamlupdate-manifest:
+update-manifest:
   stage: update-manifest
   script:
     - git clone $MANIFEST_REPO
@@ -284,7 +284,7 @@ echo "POST https://api.cloudwave10.shop/api/v1/orders" | \
 MetricTargetAchievedStatusThroughput10,000 TPS12,500 TPS✅P95 Latency< 100ms78ms✅P99 Latency< 200ms145ms✅Error Rate< 1%0.3%✅Availability99.99%99.995%✅
 Auto-scaling 검증
 ```
-yamlHPA Scaling Events:
+HPA Scaling Events:
 ├── 0-2min: 2 pods (baseline)
 ├── 2-5min: 2→10 pods (scale-up)
 ├── 5-10min: 10→50 pods (peak)
@@ -335,7 +335,7 @@ GeoIP 변환 및 분석: Python Lambda를 활용한 실시간 위치 정보 매�
 💰 비용 최적화 전략
 태그 기반 비용 추적 시스템
 ```
-yamlTagging Strategy:
+Tagging Strategy:
 ├── Mandatory Tags:
 │   ├── Environment: [Dev, Staging, Production]
 │   ├── Team: [Platform, Security, Application]
@@ -356,7 +356,7 @@ CategoryStrategySavingsComputeARM64 Graviton 채택40%Auto ScalingKarpenter 노�
 🔄 고가용성 및 재해복구 (HA/DR)
 Multi-Region Architecture
 ```
-yamlPrimary Region: ap-northeast-2 (Seoul)
+Primary Region: ap-northeast-2 (Seoul)
 ├── EKS Cluster: Active
 ├── DynamoDB: Primary Tables
 ├── Route53: Primary Records
@@ -378,7 +378,7 @@ Data Sync: DynamoDB Global Tables 실시간 동기화
 📈 모니터링 및 관측성 (Observability)
 Prometheus + Grafana Stack
 ```
-yamlMetrics Collection:
+Metrics Collection:
 ├── Infrastructure Metrics:
 │   ├── Node Exporter (System)
 │   ├── cAdvisor (Container)
