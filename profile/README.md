@@ -32,301 +32,39 @@ RTO 2분, RPO 2초 재해복구 목표 달성
 
 # 리소스 구성
 # AWS 인프라 리소스 정리
-
-## EC2
-| 리전              | 리소스명                                                                                   | 설명                           |
-|-------------------|--------------------------------------------------------------------------------------------|--------------------------------|
-| ap-northeast-2    | oliveyoung-dev-bastion-ec2, eks-cluster-prod-*                                              | 올리브영 개발 EC2, EKS 운영 EC2 |
-| sa-east-1         | sa-attack-ec2-01                                                                           | 해외 공격 용 인스턴스 (보안)    |
-| ap-northeast-1<br>ap-south-1<br>ap-southeast-1<br>ap-southeast-2 | 총 9개 인스턴스 | 해외 공격 용 인스턴스 (보안) |
-| eu-west-2<br>eu-north-1<br>eu-west-1<br>eu-central-1 | 총 8개 인스턴스 | 해외 공격 용 인스턴스 (보안) |
-| us-east-1<br>us-east-2<br>us-west-1<br>us-west-2 | 총 7개 인스턴스 | 해외 공격 용 인스턴스 (보안) |
-
----
-
-## VPC
-| 리전              | 리소스명                                                              | 설명                           |
-|-------------------|-----------------------------------------------------------------------|--------------------------------|
-| ap-northeast-2    | oliveyoung-dev, oliveyoung-prod                                       | 개발계 VPC, 운영계 VPC          |
-| ap-northeast-1    | dr-vpc                                                                | DR계 VPC                        |
-
----
-
-## VPC Endpoint
-| 리전              | 리소스명                                                                                      | 설명                                               |
-|-------------------|-----------------------------------------------------------------------------------------------|----------------------------------------------------|
-| ap-northeast-2    | oliveyoung-dev-vpc-endpoint, oliveyoung-log-s3-endpoint, ci-secret-scan-endpoint              | 개발계 서비스 접근용, 로그 수집용, 보안 스캔용     |
-
----
-
-## Subnet
-| 리전              | 리소스명                                                                                      | 설명                                               |
-|-------------------|-----------------------------------------------------------------------------------------------|----------------------------------------------------|
-| ap-northeast-2    | oliveyoung-prod-pub-a, oliveyoung-prod-pub-c, oliveyoung-prod-pri-a, oliveyoung-prod-pri-c, oliveyoung-dev-pub, oliveyoung-dev-pri | 운영계 퍼블릭/프라이빗, 개발계 퍼블릭/프라이빗 |
-| ap-northeast-1    | dr-public-a, dr-public-c, dr-private-a, dr-private-c                                          | DR계 퍼블릭/프라이빗 (AZ a, c)                    |
-
----
-
-## Routing Table
-| 리전              | 리소스명                                        | 설명                           |
-|-------------------|-------------------------------------------------|--------------------------------|
-| ap-northeast-2    | oliveyoung-prod-pub-rtb, oliveyoung-prod-pri-rtb, oliveyoung-dev-pub-rtb, oliveyoung-dev-pri-rtb | 운영/개발 라우팅 테이블 |
-| ap-northeast-1    | dr-rtb-public, dr-rtb-private                    | DR계 라우팅 테이블              |
-
----
-
-## Auto Scaling Group
-| 리전              | 리소스명                                                                                      | 설명                                               |
-|-------------------|-----------------------------------------------------------------------------------------------|----------------------------------------------------|
-| ap-northeast-2    | eks-spring-x86-28cc6e33, eks-app-nodes-8acc67c7                                              | EKS Spring 워크로드, 애플리케이션 워크로드용        |
-
----
-
-## NAT Gateway
-| 리전              | 리소스명                                               | 설명                           |
-|-------------------|--------------------------------------------------------|--------------------------------|
-| ap-northeast-2    | oliveyoung-prod-nat-a, oliveyoung-dev-nat-a             | 운영/개발 NAT 게이트웨이        |
-| ap-northeast-1    | dr-nat-a                                                | DR NAT 게이트웨이               |
-
----
-
-## Internet Gateway
-| 리전              | 리소스명                                               | 설명                           |
-|-------------------|--------------------------------------------------------|--------------------------------|
-| ap-northeast-2    | oliveyoung-prod-igw, oliveyoung-dev-igw                 | 운영/개발 IGW                  |
-| ap-northeast-1    | dr-igw                                                  | DR IGW                         |
-
----
-
-## Load Balancer
-### Network Load Balancer
-| 리전              | 리소스명                                                                                      | 설명                                               |
-|-------------------|-----------------------------------------------------------------------------------------------|----------------------------------------------------|
-| ap-northeast-2    | nlb-prometheus, nlb-headlamp                                                                 | Prometheus, K8s 관리 콘솔 접근용                   |
-
-### Application Load Balancer
-| 리전              | 리소스명                                                                                      | 설명                                               |
-|-------------------|-----------------------------------------------------------------------------------------------|----------------------------------------------------|
-| ap-northeast-2    | alb-argocd, alb-msa-ingress                                                                  | ArgoCD 접근용, MSA 인그레스                        |
-
----
-
-## ECR
-| 리전              | 리소스명                                               | 설명                           |
-|-------------------|--------------------------------------------------------|--------------------------------|
-| ap-northeast-2    | order-service, product-service, user-service            | 주문, 상품, 유저 서비스 저장소  |
-| ap-northeast-2    | spring-x86                                              | Spring 애플리케이션 저장소     |
-| ap-northeast-1    | dr-order-service, dr-product-service                    | DR용 저장소                    |
-
----
-
-## S3
-| 리전              | 리소스명                                               | 설명                           |
-|-------------------|--------------------------------------------------------|--------------------------------|
-| ap-northeast-2    | waf-logs-bestzizon, waf-logs-bestzizon-athena-results   | WAF 로그 저장/분석             |
-| ap-northeast-2    | zi-anal-bkt, zi-loki-bkt                                | 데이터 분석, Loki 로그 저장    |
-
----
-
-## DynamoDB
-| 리전              | 리소스명                                               | 설명                           |
-|-------------------|--------------------------------------------------------|--------------------------------|
-| ap-northeast-2    | orders, products-table, dr-rpo-probe                    | 주문, 상품, DR 모니터링용      |
-| ap-northeast-1    | products-table                                          | 상품 서비스 복제 테이블        |
-
----
-
-## Certificate Manager
-| 리전              | 리소스명                                               | 설명                           |
-|-------------------|--------------------------------------------------------|--------------------------------|
-| ap-northeast-2    | acm-cert-cloudwave10.shop, acm-cert-client1, acm-cert-tls | HTTPS, Client, 서버 간 TLS 인증서 |
-| ap-northeast-1    | acm-cert-api.cloudwave10.shop                           | API 서비스 HTTPS 인증서        |
-
----
-
-## EKS
-| 리전              | 리소스명                                               | 설명                           |
-|-------------------|--------------------------------------------------------|--------------------------------|
-| ap-northeast-2    | eks-prod                                                | 운영계 애플리케이션 클러스터   |
-
----
-
-## CloudWatch
-| 리전              | 리소스명                                               | 설명                           |
-|-------------------|--------------------------------------------------------|--------------------------------|
-| ap-northeast-2    | /aws/OpenSearchService/opensearch-waf-logs              | OpenSearch 로그 관리            |
-| ap-northeast-2    | /aws/eks/monitoring/cluster, /aws/eks/prod/cluster      | EKS 모니터링, 운영 클러스터 로그 |
-| ap-northeast-2    | /aws/kinesisfirehose/aws-waf-logs-opensearch            | WAF 로그 변환 상태              |
-| ap-northeast-2    | /aws/lambda/bedrock-logging, /aws/lambda/ci-secrets-scan, /aws/lambda/guardduty-response | Lambda 실행 로그 관리 |
-
----
-
-## Kinesis & Firehose
-| 리전              | 리소스명                                               | 설명                           |
-|-------------------|--------------------------------------------------------|--------------------------------|
-| ap-northeast-2    | eks-log-alert-stream                                    | EKS 이벤트 스트림              |
-| ap-northeast-2    | aws-waf-logs-opensearch                                 | WAF 로그 적재용 Firehose       |
-
----
-
-## GuardDuty
-| 리전              | 리소스명   | 설명                  |
-|-------------------|------------|-----------------------|
-| ap-northeast-2    | guardduty  | AWS 위협 탐지 서비스 |
-
----
-
-## EventBridge
-| 리전              | 리소스명                                               | 설명                           |
-|-------------------|--------------------------------------------------------|--------------------------------|
-| ap-northeast-2    | AutoScalingManagedRule, prod-karpenter-interruption, EKSComputeManagedRule | EKS/ASG 이벤트 처리 |
-| ap-northeast-2    | waf-daily-report, guardduty-high-severity              | WAF 보안 리포트, GuardDuty 대응 |
-| ap-northeast-1    | dr-on-button, dr-off-button, ecr-replica-deploy        | DR 트래픽 제어, 자동 배포       |
-
----
-
-## WAF
-| 리전              | 리소스명              | 설명                           |
-|-------------------|-----------------------|--------------------------------|
-| global            | alb-waf              | 운영계 ALB 보호 WAF            |
-| global            | blocked-ip           | GuardDuty 기반 차단 IPSet      |
-
----
-
-## Route 53
-| 리전              | 리소스명              | 설명                           |
-|-------------------|-----------------------|--------------------------------|
-| global            | cloudwave10.shop      | 도메인 레코드 (A, CNAME, NS 등) |
-
----
-
-## Lambda
-| 리전              | 리소스명                                               | 설명                           |
-|-------------------|--------------------------------------------------------|--------------------------------|
-| ap-northeast-2    | bedrock-logging, ci-secrets-scan, waf-security-report-generator, waf-log-processor, guardduty-response | 보안 자동화 Lambda 함수 |
-
----
-
-## API Gateway
-| 리전              | 리소스명                 | 설명                           |
-|-------------------|--------------------------|--------------------------------|
-| ap-northeast-2    | DeactivateAccessKeyAPI   | IAM Access Key 비활성화 API    |
-
----
-
-## OpenSearch Service
-| 리전              | 리소스명              | 설명                           |
-|-------------------|-----------------------|--------------------------------|
-| ap-northeast-2    | opensearch-waf-logs   | WAF 로그 분석용 OpenSearch     |
-
----
-
-## Glue
-| 리전              | 리소스명              | 설명                           |
-|-------------------|-----------------------|--------------------------------|
-| ap-northeast-2    | waf_logs_decoded, waf_logs_failed | Athena/OpenSearch 연동용 데이터 카탈로그 |
-
----
-
-## SES
-| 리전              | 리소스명              | 설명                           |
-|-------------------|-----------------------|--------------------------------|
-| ap-northeast-2    | ses-mail-default      | Athena 보고서 이메일 전송      |
-
----
-
-## SNS
-| 리전              | 리소스명              | 설명                           |
-|-------------------|-----------------------|--------------------------------|
-| ap-northeast-2    | waf-alert-topic       | 보안 알림 전송용 SNS 토픽      |
-
----
-
-## 태그 기반 정책 (Tag-based Policy)
-| 리전              | 리소스명              | 설명                           |
-|-------------------|-----------------------|--------------------------------|
-| global            | iam-tag-policy-01     | 태그 기반 IAM 접근 제어 정책   |
-
----
-
-## Cost Explorer
-| 리전              | 리소스명              | 설명                           |
-|-------------------|-----------------------|--------------------------------|
-| global            | cost-explorer-default | 비용 분석 및 예산 모니터링     |
-
----
-
-## AWS Budgets
-| 리전              | 리소스명              | 설명                           |
-|-------------------|-----------------------|--------------------------------|
-| global            | monthly-budget-alert  | 월별 예산 초과 알림            |
-
-
----
-
-## DR (Disaster Recovery) - 도쿄 리전 (ap-northeast-1)
-
-### VPC
-| 리전              | 리소스명                   | 설명                           |
-|-------------------|----------------------------|--------------------------------|
-| ap-northeast-1    | dr-vpc-tokyo               | DR 전용 VPC                    |
-
-### Subnet
-| 리전              | 리소스명                   | 설명                           |
-|-------------------|----------------------------|--------------------------------|
-| ap-northeast-1    | dr-public-a, dr-public-c   | DR 퍼블릭 서브넷 (AZ a, c)     |
-| ap-northeast-1    | dr-private-a, dr-private-c | DR 프라이빗 서브넷 (AZ a, c)   |
-
-### Routing Table
-| 리전              | 리소스명                   | 설명                           |
-|-------------------|----------------------------|--------------------------------|
-| ap-northeast-1    | dr-rtb-public, dr-rtb-private | DR 전용 라우팅 테이블       |
-
-### NAT Gateway
-| 리전              | 리소스명                   | 설명                           |
-|-------------------|----------------------------|--------------------------------|
-| ap-northeast-1    | dr-nat-a                   | DR NAT 게이트웨이              |
-
-### Internet Gateway
-| 리전              | 리소스명                   | 설명                           |
-|-------------------|----------------------------|--------------------------------|
-| ap-northeast-1    | dr-igw                     | DR 인터넷 게이트웨이           |
-
-### ECS (Fargate)
-| 리전              | 리소스명                   | 설명                           |
-|-------------------|----------------------------|--------------------------------|
-| ap-northeast-1    | dr-ecs-cluster, dr-fargate-service | DR 애플리케이션 실행 클러스터 |
-
-### Application Load Balancer
-| 리전              | 리소스명                   | 설명                           |
-|-------------------|----------------------------|--------------------------------|
-| ap-northeast-1    | dr-alb                     | DR 서비스용 ALB                |
-
-### ECR
-| 리전              | 리소스명                   | 설명                           |
-|-------------------|----------------------------|--------------------------------|
-| ap-northeast-1    | dr-ecr-order-service, dr-ecr-product-service | DR 컨테이너 이미지 저장소 |
-| ap-northeast-1    | ecr-replica-service        | 서울 ↔ 도쿄 ECR 복제           |
-
-### DynamoDB (Global Table)
-| 리전              | 리소스명                   | 설명                           |
-|-------------------|----------------------------|--------------------------------|
-| ap-northeast-1    | dr-products-table, dr-orders-table | DR 글로벌 테이블 복제      |
-
-### Lambda
-| 리전              | 리소스명                   | 설명                           |
-|-------------------|----------------------------|--------------------------------|
-| ap-northeast-1    | dr-scaleout-lambda, dr-replica-sync | DR 오토스케일 및 데이터 동기화 Lambda |
-
-### EventBridge
-| 리전              | 리소스명                   | 설명                           |
-|-------------------|----------------------------|--------------------------------|
-| ap-northeast-1    | dr-on-button, dr-off-button, ecr-replica-deploy | DR 전환 제어, ECR 복제 자동화 |
-
-### Route 53 (Failover Routing)
-| 리전              | 리소스명                   | 설명                           |
-|-------------------|----------------------------|--------------------------------|
-| global            | route53-dr-failover        | 서울 → 도쿄 DR 전환용 레코드 세트 |
+## AWS 리소스 인벤토리
+
+| 리소스 타입        | 리전              | 리소스명                                                                                   | 설명                                      |
+|--------------------|-------------------|--------------------------------------------------------------------------------------------|-------------------------------------------|
+| EC2               | ap-northeast-2    | oliveyoung-dev-bastion-ec2, eks-cluster-prod-*                                              | 올리브영 개발/운영 EC2                     |
+| EC2               | sa-east-1         | security-ec2-br-01, security-ec2-br-02                                                     | 해외 공격 대응 인스턴스 (브라질)           |
+| VPC               | ap-northeast-2    | oliveyoung-dev, oliveyoung-prod                                                            | 개발계/운영계 VPC                          |
+| VPC               | ap-northeast-1    | dr-vpc-tokyo                                                                               | DR 전용 VPC (도쿄)                          |
+| Subnet            | ap-northeast-2    | oliveyoung-prod-pub-a, oliveyoung-prod-pri-a, oliveyoung-dev-pub …                        | 운영계/개발계 서브넷                        |
+| Subnet            | ap-northeast-1    | dr-public-a, dr-private-a, dr-public-c, dr-private-c                                      | DR 전용 서브넷                             |
+| Internet Gateway  | ap-northeast-2    | igw-prod, igw-dev                                                                          | 운영/개발 인터넷 게이트웨이                 |
+| Internet Gateway  | ap-northeast-1    | dr-igw                                                                                     | DR 인터넷 게이트웨이                       |
+| NAT Gateway       | ap-northeast-2    | nat-prod-a, nat-prod-c, nat-dev-a, nat-dev-c                                               | 운영/개발 NAT 게이트웨이                   |
+| NAT Gateway       | ap-northeast-1    | dr-nat-a                                                                                   | DR NAT 게이트웨이                          |
+| Routing Table     | ap-northeast-2    | rtb-prod-public, rtb-prod-private, rtb-dev-public, rtb-dev-private                         | 운영/개발 라우팅 테이블                     |
+| Routing Table     | ap-northeast-1    | dr-rtb-public, dr-rtb-private                                                              | DR 라우팅 테이블                           |
+| ECS (Fargate)     | ap-northeast-2    | ecs-cluster-prod, ecs-cluster-dev                                                          | 운영/개발 ECS 클러스터                      |
+| ECS (Fargate)     | ap-northeast-1    | dr-ecs-cluster, dr-fargate-service                                                         | DR ECS 클러스터                            |
+| ECR               | ap-northeast-2    | ecr-order-service, ecr-product-service                                                     | 운영 서비스 컨테이너 이미지 저장소          |
+| ECR               | ap-northeast-1    | dr-ecr-order-service, dr-ecr-product-service, ecr-replica-service                          | DR + 서울 ↔ 도쿄 이미지 복제               |
+| DynamoDB          | ap-northeast-2    | products-table, orders-table                                                               | 운영 DynamoDB 테이블                        |
+| DynamoDB          | ap-northeast-1    | dr-products-table, dr-orders-table                                                         | DR 글로벌 테이블 복제                       |
+| Lambda            | ap-northeast-2    | scaleout-lambda, ci-secret-scan                                                            | 운영 자동화 함수                            |
+| Lambda            | ap-northeast-1    | dr-scaleout-lambda, dr-replica-sync                                                        | DR 오토스케일/복제 동기화                   |
+| EventBridge       | ap-northeast-2    | event-rule-ci-scan, event-rule-logging                                                     | 이벤트 처리                                 |
+| EventBridge       | ap-northeast-1    | dr-on-button, dr-off-button, ecr-replica-deploy                                            | DR 전환 제어 및 복제 자동화                 |
+| ALB               | ap-northeast-2    | alb-prod, alb-dev                                                                          | 운영/개발 ALB                               |
+| ALB               | ap-northeast-1    | dr-alb                                                                                     | DR ALB                                     |
+| Route 53          | global            | route53-oliveyoung, route53-dr-failover                                                    | 서비스 도메인 관리, DR 페일오버 라우팅      |
+| IAM               | global            | tag-based-policy-dev, tag-based-policy-prod                                                | 태그 기반 접근제어 정책                     |
+| Cost Explorer     | global            | cost-explorer-default                                                                      | 비용 분석 툴                                |
+| AWS Budgets       | global            | budget-prod, budget-dev                                                                    | 예산 관리                                   |
+| SNS               | ap-northeast-2    | alarm-topic-dev, alarm-topic-prod                                                          | 알림용 SNS 주제                             |
 
 
 
