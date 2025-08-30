@@ -108,7 +108,7 @@ Node Affinity: 워크로드별 최적 노드 배치
 
 2. Network Configuration
 ```
-yamlVPC CIDR: 10.1.0.0/16
+VPC CIDR: 10.1.0.0/16
 ├── Public Subnets:
 │   ├── 10.1.1.0/24 (AZ: ap-northeast-2a)
 │   └── 10.1.2.0/24 (AZ: ap-northeast-2c)
