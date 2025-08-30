@@ -8,7 +8,7 @@
 | :---: | :---: | :---: | :---: | :---: |
 | **민동일** | **심규선** | **김지호** | **장욱재** | **박소정** |
 
-# 🚀 CJ OliveYCloud-Natioung ve Application Platform Security with Zero-Trust Security Architecture
+# CJ OliveYCloud-Natioung ve Application Platform Security with Zero-Trust Security Architecture
 📋 프로젝트 개요
 Cloud Wave Best Zizon팀이 구축한 차세대 클라우드 네이티브 이커머스 플랫폼으로, CJ 올리브영의 글로벌 확장을 위한 고성능·고가용성·제로트러스트 보안 아키텍처를 구현한 엔터프라이즈급 솔루션입니다.
 🎯 핵심 성과
