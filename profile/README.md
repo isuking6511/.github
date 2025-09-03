@@ -54,8 +54,8 @@ K-뷰티의 인기가 전 세계적으로 확산되면서 올리브영은 글로
 ## 🏗️ 구현 아키텍처
 - 보안성과 확장성을 모두 확보하기 위해 **하이브리드 클라우드** 환경 채택 
 
-<img width="700" height="500" alt="스크린샷 2025-08-30 14 21 54" src="https://github.com/user-attachments/assets/4116044f-862b-48aa-bac7-13a4b1975c0b" />
-<img width="700" height="500" alt="스크린샷 2025-08-30 14 22 22" src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" />
+<img width="max" height="500" alt="스크린샷 2025-08-30 14 21 54" src="https://github.com/user-attachments/assets/4116044f-862b-48aa-bac7-13a4b1975c0b" />
+<img width="max" height="500" alt="스크린샷 2025-08-30 14 22 22" src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" />
 
 **On-Premise**
 - GitLab 서버: 소스코드 유출 원천 차단 (격리 사설망)  
