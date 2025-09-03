@@ -1,8 +1,6 @@
 # 최강zl존
 
 > CJ 올리브네트웍스 클라우드 웨이브 6기 팀 프로젝트
-<img width="468" height="241" alt="스크린샷 2025-08-30 14 24 24" src="https://github.com/user-attachments/assets/7737403a-f46a-400c-956c-3335847f36b0" />
-<img width="846" height="281" alt="스크린샷 2025-08-30 14 24 56" src="https://github.com/user-attachments/assets/eab3515b-ccc4-4218-bbc3-57edf77311c2" />
 
 ## Member
 
@@ -11,7 +9,8 @@
 | **민동일** | **심규선** | **김지호** | **장욱재** | **박소정** |
 <img width="639" height="494" alt="스크린샷 2025-08-30 14 21 54" src="https://github.com/user-attachments/assets/4116044f-862b-48aa-bac7-13a4b1975c0b" />
 <img width="815" height="419" alt="스크린샷 2025-08-30 14 22 22" src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" />
-
+<img width="468" height="241" alt="스크린샷 2025-08-30 14 24 24" src="https://github.com/user-attachments/assets/7737403a-f46a-400c-956c-3335847f36b0" />
+<img width="846" height="281" alt="스크린샷 2025-08-30 14 24 56" src="https://github.com/user-attachments/assets/eab3515b-ccc4-4218-bbc3-57edf77311c2" />
 # CJ OliveYCloud-Natioung ve Application Platform Security with Zero-Trust Security Architecture
 📋 프로젝트 개요
 Cloud Wave Best Zizon팀이 구축한 차세대 클라우드 네이티브 이커머스 플랫폼으로, CJ 올리브영의 글로벌 확장을 위한 고성능·고가용성·제로트러스트 보안 아키텍처를 구현한 엔터프라이즈급 솔루션입니다.
