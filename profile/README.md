@@ -11,15 +11,15 @@
 <img width="815" height="419" alt="스크린샷 2025-08-30 14 22 22" src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" />
 <img width="468" height="241" alt="스크린샷 2025-08-30 14 24 24" src="https://github.com/user-attachments/assets/7737403a-f46a-400c-956c-3335847f36b0" />
 <img width="846" height="281" alt="스크린샷 2025-08-30 14 24 56" src="https://github.com/user-attachments/assets/eab3515b-ccc4-4218-bbc3-57edf77311c2" />
-# CJ OliveYCloud-Natioung ve Application Platform Security with Zero-Trust Security Architecture
-📋 프로젝트 개요
-Cloud Wave Best Zizon팀이 구축한 차세대 클라우드 네이티브 이커머스 플랫폼으로, CJ 올리브영의 글로벌 확장을 위한 고성능·고가용성·제로트러스트 보안 아키텍처를 구현한 엔터프라이즈급 솔루션입니다.
-🎯 핵심 성과
 <img width="568" height="433" alt="스크린샷 2025-08-30 14 22 36" src="https://github.com/user-attachments/assets/3e953462-e8dd-485b-8d13-8fb76cf800bb" />
 <img width="647" height="338" alt="스크린샷 2025-08-30 14 23 10" src="https://github.com/user-attachments/assets/40b3eaa9-7047-4091-a97c-49f067daa151" />
 <img width="891" height="276" alt="스크린샷 2025-08-30 14 23 30" src="https://github.com/user-attachments/assets/8deeb054-d753-4473-b935-98fab946519a" />
 <img width="849" height="372" alt="스크린샷 2025-08-30 14 23 40" src="https://github.com/user-attachments/assets/56219913-ebc1-47af-a105-3e80d7b8d5a4" />
 <img width="735" height="433" alt="스크린샷 2025-08-30 14 23 56" src="https://github.com/user-attachments/assets/f667249c-a80a-492d-8f23-e628e7b79b27" />
+# CJ OliveYCloud-Natioung ve Application Platform Security with Zero-Trust Security Architecture
+📋 프로젝트 개요
+🎯 핵심 성과
+
 
 99.99% 가용성 달성 (Multi-Region DR 구축)
 10,000 TPS 처리 성능 검증 (k6/Vegeta 부하테스트)
