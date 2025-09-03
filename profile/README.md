@@ -12,6 +12,47 @@
 
 > 본 프로젝트는 CJ올리브네트웍스 클라우드웨이브 6기 5팀 '최강zl존'이 진행한 프로젝트입니다.  
 K-뷰티의 글로벌 리더 올리브영이 전 세계로 뻗어나가는 과정에서 마주할 수 있는 인프라 과제를 해결하고, **보안, 성능, 비용** 세 마리 토끼를 모두 잡는 최적의 보안 인프라를 설계하고 구축했습니다.
+## 📂 Repository Overview
+
+본 프로젝트는 MSA 아키텍처 기반의 서비스와 이를 운영하기 위한 인프라 구성 요소로 이루어져 있으며, 각 레포지토리의 역할은 다음과 같습니다.
+
+### 🔹 MSA 서비스
+
+- **product-service (Go)**
+  - 상품 관리 서비스의 Go 버전
+  - Spring Boot 기반에서 Go 언어로 리팩토링하여 경량화 및 성능 최적화
+  - REST API 제공 (상품 조회, 등록, 수정, 삭제)
+
+- **order-service (Go)**
+  - 주문 관리 서비스의 Go 버전
+  - 고성능 처리를 위해 Go 언어로 리팩토링
+  - 주문 생성, 결제, 주문 상태 관리 기능 제공
+
+- **user-service (Java Spring Boot)**
+  - 사용자 관리 서비스
+  - Spring Boot 기반으로 회원가입, 로그인, 인증/인가 등 제공
+
+### 🔹 레거시(Spring Boot) 버전
+
+- **product-service-springboot**
+  - 상품 서비스의 초기 Spring Boot 버전
+  - 이후 Go 버전으로 리팩토링되기 전의 레거시 코드
+
+- **order-service-springboot**
+  - 주문 서비스의 초기 Spring Boot 버전
+  - Go 기반으로 마이그레이션 전 단계 코드
+
+### 🔹 인프라스트럭처
+
+- **eks-cluster**
+  - AWS EKS 기반 Kubernetes 클러스터 설정 및 운영
+  - MSA 서비스(product, order, user)를 EKS 환경에서 배포/스케일링
+  - GitLab CI/CD 및 ArgoCD와 통합
+
+- **aws-infra-terraform**
+  - Terraform을 활용한 AWS 인프라 관리
+  - VPC, EKS, RDS, S3 등 주요 리소스를 IaC 방식으로 관리
+  - 하이브리드 클라우드 및 DR 환경 구성 지원
 
 ---
 
