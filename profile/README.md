@@ -55,9 +55,10 @@ K-뷰티의 인기가 전 세계적으로 확산되면서 올리브영은 글로
 - 보안성과 확장성을 모두 확보하기 위해 **하이브리드 클라우드** 환경 채택 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4116044f-862b-48aa-bac7-13a4b1975c0b" width="500" />
-  <img src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" width="500" />
+  <img src="https://github.com/user-attachments/assets/4116044f-862b-48aa-bac7-13a4b1975c0b" width="600" height="350" />
+  <img src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" width="600" height="350" />
 </p>
+
 
 
 **On-Premise**
