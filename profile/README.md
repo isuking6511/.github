@@ -105,6 +105,30 @@
     * **Kafka**: 대규모 주문 요청 비동기 메시지 큐 방식으로 처리, 병목 현상 해소
     * **VPC Endpoint**: AWS 내부망을 통한 서비스-DB 간 통신 지연 시간 최소화
     * **AWS Graviton (ARM)**: x86 아키텍처 대비 최대 40% 향상된 가성비의 ARM 프로세서 도입
+<br>
+
+## 🔬 성능 검증: '올영세일' 시나리오 스트레스 테스트
+
+> '올영세일'과 같은 최대 부하 상황을 가정하여, 지능형 오토스케일링 시스템이 안정적으로 동작하는지 검증했습니다.
+
+* **시나리오 정의**:
+    * **기준**: 올리브영 공식 트래픽 5단계 모델 기반
+    * **목표**: 최고 부하 단계인 **'(S) Special - 올영세일'** (평시 20배 이상) 트래픽을 안정적으로 처리
+
+    <img width="1024" height="440" alt="image" src="https://github.com/user-attachments/assets/3cf9d698-9d68-42bf-9ef7-fcc1b7d77565" />
+
+* **실시간 스케일링 동작**:
+    * **Pod 확장 (HPA)**: `Prometheus`로 수집된 CPU/Memory 임계값 초과 시 HPA가 Pod 수를 **4개에서 13개로 확장**
+    * **Node 프로비저닝 (Karpenter)**: HPA에 의해 스케줄링 불가능한 Pod 발생 시 `Karpenter`가 신규 Node(7개→10개)를 **Just-in-Time 방식으로 즉시 프로비저닝**
+
+    <img width="1024" height="624" alt="image" src="https://github.com/user-attachments/assets/cdbfa3ab-24c4-495a-a1a4-512d92d87bef" />
+
+* **테스트 결과 (Grafana 대시보드)**:
+    * **결과**: 트래픽 폭증에 성공적으로 대응 후, 트래픽 감소 시 Pod와 Node가 설정된 기준에 따라 안정적으로 축소됨을 확인
+    * **Pod 수**: **4 → 13 → 4** (안정적 복귀)
+    * **Node 수**: **7 → 10 → 8** (비용 최적화를 위한 점진적 축소)
+
+    <img width="1352" height="986" alt="image" src="https://github.com/user-attachments/assets/6dd70aae-8b88-481e-9981-8c9bf5053d62" />
 
 ### 💰 비용 (Cost)
 
