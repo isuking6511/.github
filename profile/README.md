@@ -38,7 +38,7 @@
   <img src="https://img.shields.io/badge/Amazon%20Athena-7D4099?logo=amazonathena&logoColor=white" />
 </p>
 
----
+<hr>
 
 <h3 align="center">CJ OliveNetworks Cloud Wave 6기 | 팀 `최강zl존`</h3>
 
@@ -85,9 +85,9 @@
 </p>
 </details>
 
-**Hybrid Cloud**: `On-Premise` (GitLab) + `AWS Cloud` (EKS) 연동
-**Multi-AZ**: `운영계(Seoul)` 다중 AZ 구성으로 고가용성 확보
-**Disaster Recovery**: `DR Site(Tokyo)` Warm Standby 구성 (2분 내 자동 전환)
+* **Hybrid Cloud**: `On-Premise` (GitLab) + `AWS Cloud` (EKS) 연동
+* **Multi-AZ**: `운영계(Seoul)` 다중 AZ 구성으로 고가용성 확보
+* **Disaster Recovery**: `DR Site(Tokyo)` Warm Standby 구성 (2분 내 자동 전환)
 
 <br>
 
@@ -135,7 +135,7 @@
 
 * **실시간 대응**: **WAF** 자동 차단 → **OpenSearch** 실시간 시각화 → **Slack** 즉각 알림
     <p align="center">
-      <img width="650" height="300" alt="Real-time Detection & Alerting Demo" src="https://github.com/user-attachments/assets/32254136-509-4a6f-819c-e56f287a5e64" />
+      <img width="650" height="300" alt="Real-time Detection & Alerting Demo" src="https://github.com/user-attachments/assets/32254136-5039-4a6f-819c-e56f287a5e64" />
     </p>
 
 * **분석 및 리포팅**: **WAF Log (S3)** → **Athena** 자동 쿼리 → **SES** 일일 보고서 발송
@@ -163,10 +163,10 @@
 
 <h3 align="center">⚡ 성능 (Performance)</h3>
 
-**유연한 리소스 확장**: `Prometheus` → `HPA` → `Karpenter` 연동으로 트래픽에 따른 동적 오토스케일링
-**안정적인 요청 처리**: `Kafka` 메시지 큐를 통한 비동기 처리로 대규모 트래픽 병목 현상 해소
-**응답 속도 향상**: `VPC Endpoint`를 통한 AWS 내부망 통신으로 네트워크 지연 최소화
-**비용 대비 성능 극대화**: `AWS Graviton`(ARM) 프로세서 도입으로 컴퓨팅 효율 최적화
+* **유연한 리소스 확장**: `Prometheus` → `HPA` → `Karpenter` 연동으로 트래픽에 따른 동적 오토스케일링
+* **안정적인 요청 처리**: `Kafka` 메시지 큐를 통한 비동기 처리로 대규모 트래픽 병목 현상 해소
+* **응답 속도 향상**: `VPC Endpoint`를 통한 AWS 내부망 통신으로 네트워크 지연 최소화
+* **비용 대비 성능 극대화**: `AWS Graviton`(ARM) 프로세서 도입으로 컴퓨팅 효율 최적화
 
 <hr>
 
@@ -210,10 +210,10 @@
 
 <h3 align="center">💰 비용 (Cost)</h3>
 
-**체계적인 비용 관리**: 전 리소스 **태깅(Tagging)**을 통한 팀/서비스 단위 비용 추적 및 분석 (FinOps)
-**스토리지 비용 절감**: **S3 Lifecycle Policy** (`Standard → IA → Glacier`) 자동 이전 (44% 절감)
-**유휴 리소스 관리**: **Lambda + EventBridge**로 심야 시간 개발 환경 리소스 자동 축소/종료
-**예산 초과 방지**: **AWS Budget** 설정으로 지정된 비용 임계값 초과 시 자동 알림 발송
+* **체계적인 비용 관리**: 전 리소스 **태깅(Tagging)**을 통한 팀/서비스 단위 비용 추적 및 분석 (FinOps)
+* **스토리지 비용 절감**: **S3 Lifecycle Policy** (`Standard → IA → Glacier`) 자동 이전 (44% 절감)
+* **유휴 리소스 관리**: **Lambda + EventBridge**로 심야 시간 개발 환경 리소스 자동 축소/종료
+* **예산 초과 방지**: **AWS Budget** 설정으로 지정된 비용 임계값 초과 시 자동 알림 발송
 
 <br>
 
@@ -245,8 +245,8 @@
 
 <h2 align="center">📂 레포지토리</h2>
 
-**MSA (Go)**: `product-service`, `order-service`
-**MSA (Java)**: `user-service`
-**Infrastructure**: `eks-cluster`, `aws-infra-terraform`
+* **MSA (Go)**: `product-service`, `order-service`
+* **MSA (Java)**: `user-service`
+* **Infrastructure**: `eks-cluster`, `aws-infra-terraform`
 
 </div>
