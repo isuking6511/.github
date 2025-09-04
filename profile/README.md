@@ -140,7 +140,7 @@
 <p align="center">
   <img width="800" alt="Grafana Dashboard Results" src="https://github.com/user-attachments/assets/6dd70aae-8b88-481e-9981-8c9bf5053d62" />
 </p>
-
+---
 ### 💰 비용 (Cost)
 
 * **FinOps 적용**: 모든 리소스에 태그를 적용하여 팀/서비스 단위 비용 추적 및 분석
