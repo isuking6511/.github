@@ -37,9 +37,13 @@
 
 > 보안과 확장성을 위해 On-Premise GitLab과 AWS Cloud를 연동한 **하이브리드 클라우드** 환경을 채택했습니다.
 
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4116044f-862b-48aa-bac7-13a4b1975c0b" width="700" />
+  <br /><br />
+  <img src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" width="700" />
 </p>
+
 
 * **On-Premise**: 소스코드 유출을 원천 차단하기 위한 GitLab 서버 (격리 사설망)
 * **AWS Cloud (Seoul)**: EKS 기반 MSA 운영 환경 (Staging/Production 분리)
