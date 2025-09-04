@@ -59,8 +59,12 @@
 
 ## 🏗️ 아키텍처
 
+> 💡 **아래 제목을 클릭하면 상세 아키텍처 다이어그램이 펼쳐집니다.**
+
+<br>
+
 <details>
-<summary><strong>📍 AWS Seoul Region (Production / Staging)</strong></summary>
+<summary><strong>[Architecture Diagram] 📍 AWS Seoul Region (Production / Staging)</strong></summary>
 <br>
 <table border="0">
  <tr>
@@ -73,7 +77,7 @@
 <br>
 
 <details>
-<summary><strong>🇯🇵 AWS Tokyo Region (Disaster Recovery Site)</strong></summary>
+<summary><strong>[Architecture Diagram] 🇯🇵 AWS Tokyo Region (DR Site)</strong></summary>
 <br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" width="700" />
@@ -90,8 +94,12 @@
 
 ### 🔐 보안 (Security)
 
+> 💡 **아래 3개의 주제를 클릭하면 상세 구현 내용과 증명 자료(이미지)가 펼쳐집니다.**
+
+<br>
+
 <details>
-<summary><strong>1. 원칙: "절대 신뢰하지 말고, 항상 검증하라" (NIST Zero Trust Architecture 기반)</strong></summary>
+<summary><strong>[구현 상세] 1. 원칙: "절대 신뢰하지 말고, 항상 검증하라"</strong></summary>
 <br>
     
 * **서비스 간 상호 인증**: MSA 환경 내 모든 서비스 통신에 **mTLS** 상호 인증 적용
@@ -111,7 +119,7 @@
 </details>
 
 <details>
-<summary><strong>2. 자동화된 외부 위협 대응</strong></summary>
+<summary><strong>[구현 상세] 2. 자동화된 외부 위협 대응</strong></summary>
 <br>
 
 * **테스트 시나리오**: 대규모 **Credential Stuffing** 공격 및 개인정보 유출 상황 모의
@@ -136,7 +144,7 @@
 </details>
 
 <details>
-<summary><strong>3. CI/CD 파이프라인 보안 (DevSecOps)</strong></summary>
+<summary><strong>[구현 상세] 3. CI/CD 파이프라인 보안 (DevSecOps)</strong></summary>
 <br>
 
 * **정적 코드 분석**: `SonarQube`를 통한 소스 코드 레벨의 잠재적 보안 취약점 사전 탐지
@@ -163,10 +171,12 @@
 
 ## 🔬 성능 검증: '올영세일' 시나리오 스트레스 테스트
 
-> '올영세일'과 같은 최대 부하 상황을 가정하여, 지능형 오토스케일링 시스템이 안정적으로 동작하는지 검증했습니다.
+> 💡 **아래 제목을 클릭하면 상세 테스트 과정 및 결과가 펼쳐집니다.**
+
+<br>
 
 <details>
-<summary><strong>자세히 보기: 시나리오 정의, 실시간 스케일링, 테스트 결과</strong></summary>
+<summary><strong>[Test Details] 시나리오 정의, 실시간 스케일링, 테스트 결과</strong></summary>
 <br>
 
 * **시나리오 정의**:
