@@ -58,26 +58,23 @@
 
 ## 🏗️ 아키텍처
 
-<details>
-<summary><strong>📍 AWS Seoul Region (Production / Staging)</strong></summary>
-<br>
 <table border="0">
  <tr>
   <td align="center"><img src="https://github.com/user-attachments/assets/4116044f-862b-48aa-bac7-13a4b1975c0b" width="100%" /></td>
   <td align="center"><img src="https://github.com/user-attachments/assets/18b6b3bf-4d14-400b-80cc-8e5352d1e712" width="100%" /></td>
  </tr>
+ <tr>
+  <td colspan="2" align="center"><strong>📍 AWS Seoul Region (Production / Staging)</strong></td>
+ </tr>
 </table>
-</details>
 
 <br>
 
-<details>
-<summary><strong>🇯🇵 AWS Tokyo Region (Disaster Recovery Site)</strong></summary>
-<br>
 <p align="center">
   <img src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" width="700" />
+  <br>
+  <strong>🇯🇵 AWS Tokyo Region (Disaster Recovery Site)</strong>
 </p>
-</details>
 
 * **Hybrid Cloud**: `On-Premise` (GitLab) + `AWS Cloud` (EKS) 연동
 * **Multi-AZ**: `운영계(Seoul)` 다중 AZ 구성으로 고가용성 확보
