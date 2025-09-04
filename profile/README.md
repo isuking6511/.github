@@ -87,16 +87,60 @@
 
 ### 🔐 보안 (Security)
 
-* **Zero Trust Architecture**:
-    * **SPIRE**: 플랫폼 독립적인 신원 증명을 통한 서비스 간 상호 인증(mTLS) 구현
-    * **초단기 인증서**: 60초 수명 인증서 30초 주기 자동 갱신 (인증서 탈취 피해 최소화)
-* **다층 방어 체계**:
-    * **AWS WAF**: SQL Injection, XSS 등 OWASP Top 10 기반 외부 웹 공격 방어
-    * **Falco**: 컨테이너 런타임 환경 커널 레벨 이상 행위 실시간 탐지 (내부 위협 대응)
-    * **SonarQube & Secret Scanner**: CI 단계 코드 취약점 및 민감 정보 노출 사전 차단
-* **자동화된 위협 대응 및 리포팅**:
-    * **WAF → OpenSearch → Slack**: 외부 공격 실시간 탐지-시각화-알림 파이프라인
-    * **S3 → Athena → SES**: 방대한 로그를 `Athena`로 자동 분석, 일일 보안 보고서 이메일 발송
+* **원칙: "절대 신뢰하지 말고, 항상 검증하라" (NIST Zero Trust Architecture 기반)**
+    * **서비스 간 상호 인증: mTLS (Mutual TLS)**
+        * 클라이언트와 서버가 서로를 신뢰할 수 없는 MSA 환경에서, 모든 서비스가 상호 인증서를 검증하는 mTLS 통신을 기본으로 설정했습니다.
+
+        <img width="1024" height="687" alt="image" src="https://github.com/user-attachments/assets/cef71004-f042-469f-8170-5d9a2d2fbbb8" />
+
+
+    * **mTLS 자동화 구현: SPIRE (SPIFFE Runtime Environment)**
+        * 수많은 인증서를 수동으로 관리하는 것은 불가능하므로, SPIRE를 도입하여 워크로드 증명(Attestation) 기반의 신원 확인 및 인증서 발급/갱신을 100% 자동화했습니다.
+
+        <img width="1024" height="1000" alt="image" src="https://github.com/user-attachments/assets/9066d6a4-4674-4074-a3d4-7337d745c2c0" />
+
+
+    * **인증서 탈취 대응: 초단기 수명 인증서 (Short-Lived SVID)**
+        * **60초 수명**의 인증서를 **30초** 주기로 자동 갱신하여, 만에 하나 인증서가 탈취되더라도 피해를 최소화하도록 설계했습니다.
+
+        <img width="1024" height="656" alt="image" src="https://github.com/user-attachments/assets/e127d6e8-d7ae-444a-9cc5-bae5b10797fe" />
+
+
+---
+
+* **자동화된 외부 위협 대응**:
+    * **테스트 시나리오: 글로벌 DDos 공격 및 개인정보 유출**
+        * 실제 발생 가능한 대규모 Credential Stuffing 공격 및 개인정보 유출 상황을 시나리오로 설정했습니다.
+
+        <img width="1024" height="701" alt="image" src="https://github.com/user-attachments/assets/a8d7f2c6-47a4-45dd-8f6a-0ec858e66e51" />
+
+
+    * **자동화 파이프라인 아키텍처**:
+        * 공격 발생 시 사람의 개입 없이 **탐지, 차단, 시각화, 알림, 분석, 리포팅**까지의 전 과정을 자동화하는 파이프라인을 구축했습니다.
+
+        <img width="1024" height="585" alt="image" src="https://github.com/user-attachments/assets/b21fe029-d27e-47c5-a3ed-87f287392acf" />
+
+
+    * **실시간 탐지, 차단, 시각화 및 알림 (100% 자동화)**:
+        * **AWS WAF** 규칙 기반 IP 자동 차단, **OpenSearch** 대시보드를 통한 실시간 공격 시각화, **Slack**을 통한 즉각적인 위협 알림이 자동으로 수행됩니다.
+
+        <img width="1023" height="439" alt="image" src="https://github.com/user-attachments/assets/32254136-5039-4a6f-819c-e56f287a5e64" />
+
+
+    * **로그 분석 및 리포팅 자동화**:
+        * 차단된 **WAF 로그** (S3 저장) → **Athena** 쿼리를 통한 자동 통계 분석 → **SES**를 통한 일일 보고서 발송
+
+        <img width="1023" height="480" alt="image" src="https://github.com/user-attachments/assets/b6717032-9c6d-4d8d-8d33-fa9f08b03cbe" />
+
+
+---
+
+* **CI/CD 파이프라인 보안 (DevSecOps)**
+    * **SonarQube**: 정적 코드 분석을 통해 소스 코드 레벨의 잠재적 취약점을 사전에 탐지합니다.
+    * **Secret Scanner**: Git 커밋 내에 민감 정보(API 키 등)가 노출될 경우, 이를 실시간으로 탐지하고 즉시 키를 비활성화하며 담당자에게 경고합니다.
+
+
+ ---
 
 ### ⚡ 성능 (Performance)
 
