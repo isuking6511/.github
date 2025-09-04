@@ -1,45 +1,46 @@
+<div align="center">
+
 # 🌐 Cloud Infrastructure for Global OliveYoung
 
 > K-뷰티 리더 올리브영의 글로벌 확장을 위한 MSA 기반 제로 트러스트(Zero Trust) 보안 인프라
 
-<p align="center">
+<p>
   <img src="https://img.shields.io/badge/AWS-232F3E?logo=amazonaws&logoColor=white" />
   <img src="https://img.shields.io/badge/Kubernetes-326CE5?logo=kubernetes&logoColor=white" />
   <img src="https://img.shields.io/badge/Terraform-7B42BC?logo=terraform&logoColor=white" />
   <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white" />
   <img src="https://img.shields.io/badge/Helm-0F1689?logo=helm&logoColor=white" />
 </p>
-<p align="center">
+<p>
   <img src="https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white" />
   <img src="https://img.shields.io/badge/Java-007396?logo=openjdk&logoColor=white" />
   <img src="https://img.shields.io/badge/Spring-6DB33F?logo=spring&logoColor=white" />
   <img src="https://img.shields.io/badge/Apache%20Kafka-231F20?logo=apachekafka&logoColor=white" />
   <img src="https://img.shields.io/badge/Amazon%20DynamoDB-4053D6?logo=amazondynamodb&logoColor=white" />
 </p>
-<p align="center">
+<p>
   <img src="https://img.shields.io/badge/GitLab-FC6D26?logo=gitlab&logoColor=white" />
   <img src="https://img.shields.io/badge/Jenkins-D24939?logo=jenkins&logoColor=white" />
   <img src="https://img.shields.io/badge/ArgoCD-EF7B4D?logo=argocd&logoColor=white" />
   <img src="https://img.shields.io/badge/Amazon%20ECR-FF9900?logo=amazonelasticcontainerregistry&logoColor=white" />
 </p>
-<p align="center">
+<p>
   <img src="https://img.shields.io/badge/SPIRE-A6C444?logo=spiffe&logoColor=white" />
   <img src="https://img.shields.io/badge/Falco-00A5E6?logo=falco&logoColor=white" />
   <img src="https://img.shields.io/badge/SonarQube-4E9BCD?logo=sonarqube&logoColor=white" />
   <img src="https://img.shields.io/badge/AWS%20WAF-FF9900?logo=awswaf&logoColor=white" />
   <img src="https://img.shields.io/badge/NIST-000000?logo=nist&logoColor=white" />
 </p>
-<p align="center">
+<p>
   <img src="https://img.shields.io/badge/Prometheus-E6522C?logo=prometheus&logoColor=white" />
   <img src="https://img.shields.io/badge/Grafana-F46800?logo=grafana&logoColor=white" />
   <img src="https://img.shields.io/badge/OpenSearch-005EB8?logo=opensearch&logoColor=white" />
   <img src="https://img.shields.io/badge/Amazon%20Athena-7D4099?logo=amazonathena&logoColor=white" />
 </p>
 
-
 ---
 
-### CJ OliveNetworks Cloud Wave 6기 | 팀 `최강zl존`
+<h3 align="center">CJ OliveNetworks Cloud Wave 6기 | 팀 `최강zl존`</h3>
 
 | [<img src="https://github.com/DongilMin.png" width="100">](https://github.com/DongilMin) | [<img src="https://github.com/gyuseon25.png" width="100">](https://github.com/gyuseon25) | [<img src="https://github.com/isuking6511.png" width="100">](https://github.com/isuking6511) | [<img src="https://github.com/dfadsfa.png" width="100">](https://github.com/dfadsfa) | [<img src="https://github.com/sojung102.png" width="100">](https://github.com/sojung102) |
 | :---: | :---: | :---: | :---: | :---: |
@@ -47,7 +48,7 @@
 
 <br>
 
-## 🚀 프로젝트 목표
+<h2 align="center">🚀 프로젝트 목표</h2>
 
 | 구분 | 목표 |
 | :---: | :--- |
@@ -57,7 +58,7 @@
 
 <br>
 
-## 🏗️ 아키텍처
+<h2 align="center">🏗️ 아키텍처</h2>
 
 > 💡 **아래 제목을 클릭하면 상세 아키텍처 다이어그램이 펼쳐집니다.**
 
@@ -84,15 +85,15 @@
 </p>
 </details>
 
-* **Hybrid Cloud**: `On-Premise` (GitLab) + `AWS Cloud` (EKS) 연동
-* **Multi-AZ**: `운영계(Seoul)` 다중 AZ 구성으로 고가용성 확보
-* **Disaster Recovery**: `DR Site(Tokyo)` Warm Standby 구성 (2분 내 자동 전환)
+**Hybrid Cloud**: `On-Premise` (GitLab) + `AWS Cloud` (EKS) 연동
+**Multi-AZ**: `운영계(Seoul)` 다중 AZ 구성으로 고가용성 확보
+**Disaster Recovery**: `DR Site(Tokyo)` Warm Standby 구성 (2분 내 자동 전환)
 
 <br>
 
-## ✨ 핵심 기능
+<h2 align="center">✨ 핵심 기능</h2>
 
-### 🔐 보안 (Security)
+<h3 align="center">🔐 보안 (Security)</h3>
 
 > 💡 **아래 3개의 주제를 클릭하면 상세 구현 내용과 증명 자료(이미지)가 펼쳐집니다.**
 
@@ -109,7 +110,7 @@
 
 * **mTLS 자동화**: 수동 관리의 한계 → **SPIRE** 도입으로 **워크로드 증명(Attestation)** 기반 인증서 발급/갱신 **100% 자동화**
     <p align="center">
-      <img width="650" height="300" alt="SPIRE Architecture" src="https://github.com/user-attachments/assets/9066d6a4-4674-4074-a3d4-7337d745c2c0" />
+      <img width="650" height="400" alt="SPIRE Architecture" src="https://github.com/user-attachments/assets/9066d6a4-4674-4074-a3d4-7337d745c2c0" />
     </p>
 
 * **인증서 탈취 대응**: **60초 수명**의 초단기 인증서(SVID)를 **30초** 주기로 자동 갱신하여 탈취 피해 최소화
@@ -124,22 +125,22 @@
 
 * **테스트 시나리오**: 대규모 **Credential Stuffing** 공격 및 개인정보 유출 상황 모의
     <p align="center">
-      <img width="650"  height="300" alt="Simulated Data Breach Scenario" src="https://github.com/user-attachments/assets/a8d7f2c6-47a4-45dd-8f6a-0ec858e66e51" />
+      <img width="650" height="300" alt="Simulated Data Breach Scenario" src="https://github.com/user-attachments/assets/a8d7f2c6-47a4-45dd-8f6a-0ec858e66e51" />
     </p>
 
 * **대응 파이프라인**: **탐지 → 차단 → 시각화 → 알림 → 분석 → 리포팅** 전 과정 100% 자동화
     <p align="center">
-      <img width="650"  height="300" alt="Automated Threat Response Pipeline" src="https://github.com/user-attachments/assets/b21fe029-d27e-47c5-a3ed-87f287392acf" />
+      <img width="650" height="300" alt="Automated Threat Response Pipeline" src="https://github.com/user-attachments/assets/b21fe029-d27e-47c5-a3ed-87f287392acf" />
     </p>
 
 * **실시간 대응**: **WAF** 자동 차단 → **OpenSearch** 실시간 시각화 → **Slack** 즉각 알림
     <p align="center">
-      <img width="650"  height="300" alt="Real-time Detection & Alerting Demo" src="https://github.com/user-attachments/assets/32254136-5039-4a6f-819c-e56f287a5e64" />
+      <img width="650" height="300" alt="Real-time Detection & Alerting Demo" src="https://github.com/user-attachments/assets/32254136-509-4a6f-819c-e56f287a5e64" />
     </p>
 
 * **분석 및 리포팅**: **WAF Log (S3)** → **Athena** 자동 쿼리 → **SES** 일일 보고서 발송
     <p align="center">
-      <img width="650"  height="300" alt="Automated Log Analysis & Reporting" src="https://github.com/user-attachments/assets/b6717032-9c6d-4d8d-8d33-fa9f08b03cbe" />
+      <img width="650" height="300" alt="Automated Log Analysis & Reporting" src="https://github.com/user-attachments/assets/b6717032-9c6d-4d8d-8d33-fa9f08b03cbe" />
     </p>
 </details>
 
@@ -149,27 +150,27 @@
 
 * **정적 코드 분석**: `SonarQube`를 통한 소스 코드 레벨의 잠재적 보안 취약점 사전 탐지
     <p align="center">
-      <img width="650"  height="300" alt="SonarQube SAST" src="https://github.com/user-attachments/assets/75a51d55-d680-4b82-b2bb-e7f67bd3bd56" />
+      <img width="650" height="300" alt="SonarQube SAST" src="https://github.com/user-attachments/assets/75a51d55-d680-4b82-b2bb-e7f67bd3bd56" />
     </p>
 
 * **민감 정보 스캐닝**: `Git` 커밋 내 민감 정보(API 키 등) 실시간 탐지, 자동 비활성화 및 경고
     <p align="center">
-      <img width="650"  height="300" alt="Secret Scanning & Alerting" src="https://github.com/user-attachments/assets/06b46a5b-798d-4369-b2be-7ee69d49fe3d" />
+      <img width="650" height="300" alt="Secret Scanning & Alerting" src="https://github.com/user-attachments/assets/06b46a5b-798d-4369-b2be-7ee69d49fe3d" />
     </p>
 </details>
 
----
+<hr>
 
-### ⚡ 성능 (Performance)
+<h3 align="center">⚡ 성능 (Performance)</h3>
 
-* **유연한 리소스 확장**: `Prometheus` → `HPA` → `Karpenter` 연동으로 트래픽에 따른 동적 오토스케일링
-* **안정적인 요청 처리**: `Kafka` 메시지 큐를 통한 비동기 처리로 대규모 트래픽 병목 현상 해소
-* **응답 속도 향상**: `VPC Endpoint`를 통한 AWS 내부망 통신으로 네트워크 지연 최소화
-* **비용 대비 성능 극대화**: `AWS Graviton`(ARM) 프로세서 도입으로 컴퓨팅 효율 최적화
+**유연한 리소스 확장**: `Prometheus` → `HPA` → `Karpenter` 연동으로 트래픽에 따른 동적 오토스케일링
+**안정적인 요청 처리**: `Kafka` 메시지 큐를 통한 비동기 처리로 대규모 트래픽 병목 현상 해소
+**응답 속도 향상**: `VPC Endpoint`를 통한 AWS 내부망 통신으로 네트워크 지연 최소화
+**비용 대비 성능 극대화**: `AWS Graviton`(ARM) 프로세서 도입으로 컴퓨팅 효율 최적화
 
----
+<hr>
 
-## 🔬 성능 검증: '올영세일' 시나리오 스트레스 테스트
+<h2 align="center">🔬 성능 검증: '올영세일' 시나리오 스트레스 테스트</h2>
 
 > 💡 **아래 제목을 클릭하면 상세 테스트 과정 및 결과가 펼쳐집니다.**
 
@@ -205,18 +206,18 @@
     </p>
 </details>
 
----
+<hr>
 
-### 💰 비용 (Cost)
+<h3 align="center">💰 비용 (Cost)</h3>
 
-* **체계적인 비용 관리**: 전 리소스 **태깅(Tagging)**을 통한 팀/서비스 단위 비용 추적 및 분석 (FinOps)
-* **스토리지 비용 절감**: **S3 Lifecycle Policy** (`Standard → IA → Glacier`) 자동 이전 (44% 절감)
-* **유휴 리소스 관리**: **Lambda + EventBridge**로 심야 시간 개발 환경 리소스 자동 축소/종료
-* **예산 초과 방지**: **AWS Budget** 설정으로 지정된 비용 임계값 초과 시 자동 알림 발송
+**체계적인 비용 관리**: 전 리소스 **태깅(Tagging)**을 통한 팀/서비스 단위 비용 추적 및 분석 (FinOps)
+**스토리지 비용 절감**: **S3 Lifecycle Policy** (`Standard → IA → Glacier`) 자동 이전 (44% 절감)
+**유휴 리소스 관리**: **Lambda + EventBridge**로 심야 시간 개발 환경 리소스 자동 축소/종료
+**예산 초과 방지**: **AWS Budget** 설정으로 지정된 비용 임계값 초과 시 자동 알림 발송
 
 <br>
 
-## 🛠️ 기술 스택
+<h2 align="center">🛠️ 기술 스택</h2>
 
 | 구분 | 기술 |
 | :--- | :--- |
@@ -231,7 +232,7 @@
 
 <br>
 
-## 📊 핵심 성과
+<h2 align="center">📊 핵심 성과</h2>
 
 | 영역 | 성과 |
 | :---: | :--- |
@@ -242,8 +243,10 @@
 
 <br>
 
-## 📂 레포지토리
+<h2 align="center">📂 레포지토리</h2>
 
-* **MSA (Go)**: `product-service`, `order-service`
-* **MSA (Java)**: `user-service`
-* **Infrastructure**: `eks-cluster`, `aws-infra-terraform`
+**MSA (Go)**: `product-service`, `order-service`
+**MSA (Java)**: `user-service`
+**Infrastructure**: `eks-cluster`, `aws-infra-terraform`
+
+</div>
