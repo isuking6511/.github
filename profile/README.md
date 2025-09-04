@@ -63,8 +63,7 @@
   <br /><br />
   <img src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" width="700" />
   <br /><br />
-  <img src="https://github.com/user-attachments/assets/4e9ba4b2-d382-491c-bd24-8a2af9e23e01" width="700"/>
-
+  <img width="700" src="https://github.com/user-attachments/assets/48a16acc-0ad1-47e5-80ae-6bda7373c055" />
 </p>
 
 * **Hybrid Cloud**: `On-Premise` (GitLab) + `AWS Cloud` (EKS) 연동
