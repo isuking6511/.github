@@ -36,6 +36,7 @@
   <img src="https://img.shields.io/badge/Amazon%20Athena-7D4099?logo=amazonathena&logoColor=white" />
 </p>
 
+
 ---
 
 ### CJ OliveNetworks Cloud Wave 6기 | 팀 `최강zl존`
@@ -127,7 +128,7 @@
     * **Node 프로비저닝 (Karpenter)**: HPA에 의해 스케줄링 불가능한 Pod 발생 시 `Karpenter`가 신규 Node(7개→10개)를 **Just-in-Time 방식으로 즉시 프로비저닝**
 
 <p align="center">
-  <img width="800" alt="Real-time Scaling Visualization" src="https://github.com/user-attachments/assets/cdbfa3ab-24c4-495a-a1a4-512d92d87bef" />
+  <img width="800" alt="스크린샷 2025-09-04 13 52 53" src="https://github.com/user-attachments/assets/be64eb3d-67c9-4313-a2b5-355df6f53814" />
 </p>
 
 ---
