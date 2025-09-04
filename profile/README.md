@@ -130,9 +130,13 @@
 
 * **CI/CD 파이프라인 보안 (DevSecOps)**
     * **SonarQube**: 정적 코드 분석을 통해 소스 코드 레벨의 잠재적 취약점을 사전에 탐지합니다.
+    <p align="center">
       <img width="650" height="400" alt="스크린샷 2025-09-04 14 17 24" src="https://github.com/user-attachments/assets/75a51d55-d680-4b82-b2bb-e7f67bd3bd56" />
+    </p>
     * **Secret Scanner**: Git 커밋 내에 민감 정보(API 키 등)가 노출될 경우, 이를 실시간으로 탐지하고 즉시 키를 비활성화하며 담당자에게 경고합니다.
+     <p align="center">
       <img width="650" height="400" alt="스크린샷 2025-09-04 14 17 37" src="https://github.com/user-attachments/assets/06b46a5b-798d-4369-b2be-7ee69d49fe3d" />
+    </p>
 
 ---
 
@@ -155,7 +159,7 @@
     * **목표**: 최고 부하 단계인 **'(S) Special - 올영세일'** (평시 20배 이상) 트래픽을 안정적으로 처리
 
 <p align="center">
-  <img width="800" alt="Traffic Level Scenario" src="https://github.com/user-attachments/assets/3cf9d698-9d68-42bf-9ef7-fcc1b7d77565" />
+  <img width="650" height="400" alt="Traffic Level Scenario" src="https://github.com/user-attachments/assets/3cf9d698-9d68-42bf-9ef7-fcc1b7d77565" />
 </p>
 
 ---
@@ -165,7 +169,7 @@
     * **Node 프로비저닝 (Karpenter)**: HPA에 의해 스케줄링 불가능한 Pod 발생 시 `Karpenter`가 신규 Node(7개→10개)를 **Just-in-Time 방식으로 즉시 프로비저닝**
 
 <p align="center">
-  <img width="800" alt="Real-time Scaling Visualization" src="https://github.com/user-attachments/assets/be64eb3d-67c9-4313-a2b5-355df6f53814" />
+  <img width="650" height="400" alt="Real-time Scaling Visualization" src="https://github.com/user-attachments/assets/be64eb3d-67c9-4313-a2b5-355df6f53814" />
 </p>
 
 ---
@@ -176,7 +180,7 @@
     * **Node 수**: **7 → 10 → 8** (비용 최적화를 위한 점진적 축소)
 
 <p align="center">
-  <img width="800" alt="Grafana Dashboard Results" src="https://github.com/user-attachments/assets/6dd70aae-8b88-481e-9981-8c9bf5053d62" />
+  <img width="650" height="400" alt="Grafana Dashboard Results" src="https://github.com/user-attachments/assets/6dd70aae-8b88-481e-9981-8c9bf5053d62" />
 </p>
 ---
 ### 💰 비용 (Cost)
