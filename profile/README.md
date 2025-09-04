@@ -64,7 +64,7 @@
   <td align="center"><img src="https://github.com/user-attachments/assets/18b6b3bf-4d14-400b-80cc-8e5352d1e712" width="100%" /></td>
  </tr>
  <tr>
-  <td colspan="2" align="center"><strong>📍 AWS Seoul Region (Production / Staging)</strong></td>
+  <td colspan="2" align="center"><strong> AWS Seoul Region (Production / Staging)</strong></td>
  </tr>
 </table>
 
@@ -73,7 +73,7 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" width="700" />
   <br>
-  <strong>🇯🇵 AWS Tokyo Region (Disaster Recovery Site)</strong>
+  <strong> AWS Tokyo Region </strong>
 </p>
 
 * **Hybrid Cloud**: `On-Premise` (GitLab) + `AWS Cloud` (EKS) 연동
