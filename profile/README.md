@@ -80,7 +80,7 @@
 <summary><strong>[Architecture Diagram] 🇯🇵 AWS Tokyo Region (DR Site)</strong></summary>
 <br>
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" width="700" />
+  <img src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" width="800" />
 </p>
 </details>
 
@@ -104,12 +104,12 @@
     
 * **서비스 간 상호 인증**: MSA 환경 내 모든 서비스 통신에 **mTLS** 상호 인증 적용
     <p align="center">
-      <img width="650" alt="TLS vs mTLS Communication" src="https://github.com/user-attachments/assets/cef71004-f042-469f-8170-5d9a2d2fbbb8" />
+      <img width="650" height="300" alt="TLS vs mTLS Communication" src="https://github.com/user-attachments/assets/cef71004-f042-469f-8170-5d9a2d2fbbb8" />
     </p>
 
 * **mTLS 자동화**: 수동 관리의 한계 → **SPIRE** 도입으로 **워크로드 증명(Attestation)** 기반 인증서 발급/갱신 **100% 자동화**
     <p align="center">
-      <img width="650" height="400" alt="SPIRE Architecture" src="https://github.com/user-attachments/assets/9066d6a4-4674-4074-a3d4-7337d745c2c0" />
+      <img width="650" height="300" alt="SPIRE Architecture" src="https://github.com/user-attachments/assets/9066d6a4-4674-4074-a3d4-7337d745c2c0" />
     </p>
 
 * **인증서 탈취 대응**: **60초 수명**의 초단기 인증서(SVID)를 **30초** 주기로 자동 갱신하여 탈취 피해 최소화
@@ -124,22 +124,22 @@
 
 * **테스트 시나리오**: 대규모 **Credential Stuffing** 공격 및 개인정보 유출 상황 모의
     <p align="center">
-      <img width="650" alt="Simulated Data Breach Scenario" src="https://github.com/user-attachments/assets/a8d7f2c6-47a4-45dd-8f6a-0ec858e66e51" />
+      <img width="650"  height="300" alt="Simulated Data Breach Scenario" src="https://github.com/user-attachments/assets/a8d7f2c6-47a4-45dd-8f6a-0ec858e66e51" />
     </p>
 
 * **대응 파이프라인**: **탐지 → 차단 → 시각화 → 알림 → 분석 → 리포팅** 전 과정 100% 자동화
     <p align="center">
-      <img width="650" alt="Automated Threat Response Pipeline" src="https://github.com/user-attachments/assets/b21fe029-d27e-47c5-a3ed-87f287392acf" />
+      <img width="650"  height="300" alt="Automated Threat Response Pipeline" src="https://github.com/user-attachments/assets/b21fe029-d27e-47c5-a3ed-87f287392acf" />
     </p>
 
 * **실시간 대응**: **WAF** 자동 차단 → **OpenSearch** 실시간 시각화 → **Slack** 즉각 알림
     <p align="center">
-      <img width="650" alt="Real-time Detection & Alerting Demo" src="https://github.com/user-attachments/assets/32254136-5039-4a6f-819c-e56f287a5e64" />
+      <img width="650"  height="300" alt="Real-time Detection & Alerting Demo" src="https://github.com/user-attachments/assets/32254136-5039-4a6f-819c-e56f287a5e64" />
     </p>
 
 * **분석 및 리포팅**: **WAF Log (S3)** → **Athena** 자동 쿼리 → **SES** 일일 보고서 발송
     <p align="center">
-      <img width="650" alt="Automated Log Analysis & Reporting" src="https://github.com/user-attachments/assets/b6717032-9c6d-4d8d-8d33-fa9f08b03cbe" />
+      <img width="650"  height="300" alt="Automated Log Analysis & Reporting" src="https://github.com/user-attachments/assets/b6717032-9c6d-4d8d-8d33-fa9f08b03cbe" />
     </p>
 </details>
 
@@ -149,12 +149,12 @@
 
 * **정적 코드 분석**: `SonarQube`를 통한 소스 코드 레벨의 잠재적 보안 취약점 사전 탐지
     <p align="center">
-      <img width="650" alt="SonarQube SAST" src="https://github.com/user-attachments/assets/75a51d55-d680-4b82-b2bb-e7f67bd3bd56" />
+      <img width="650"  height="300" alt="SonarQube SAST" src="https://github.com/user-attachments/assets/75a51d55-d680-4b82-b2bb-e7f67bd3bd56" />
     </p>
 
 * **민감 정보 스캐닝**: `Git` 커밋 내 민감 정보(API 키 등) 실시간 탐지, 자동 비활성화 및 경고
     <p align="center">
-      <img width="650" alt="Secret Scanning & Alerting" src="https://github.com/user-attachments/assets/06b46a5b-798d-4369-b2be-7ee69d49fe3d" />
+      <img width="650"  height="300" alt="Secret Scanning & Alerting" src="https://github.com/user-attachments/assets/06b46a5b-798d-4369-b2be-7ee69d49fe3d" />
     </p>
 </details>
 
@@ -184,7 +184,7 @@
     * **목표**: 최고 부하 단계인 **'(S) Special - 올영세일'** (평시 20배 이상) 트래픽을 안정적으로 처리
 
     <p align="center">
-      <img width="650" alt="Traffic Level Scenario" src="https://github.com/user-attachments/assets/3cf9d698-9d68-42bf-9ef7-fcc1b7d77565" />
+      <img width="650" height="300" alt="Traffic Level Scenario" src="https://github.com/user-attachments/assets/3cf9d698-9d68-42bf-9ef7-fcc1b7d77565" />
     </p>
 
 * **실시간 스케일링 동작**:
@@ -192,7 +192,7 @@
     * **Node 프로비저닝 (Karpenter)**: HPA에 의해 스케줄링 불가능한 Pod 발생 시 `Karpenter`가 신규 Node(7개→10개)를 **Just-in-Time 방식으로 즉시 프로비저닝**
 
     <p align="center">
-      <img width="650" alt="Real-time Scaling Visualization" src="https://github.com/user-attachments/assets/be64eb3d-67c9-4313-a2b5-355df6f53814" />
+      <img width="650" height="300" alt="Real-time Scaling Visualization" src="https://github.com/user-attachments/assets/be64eb3d-67c9-4313-a2b5-355df6f53814" />
     </p>
 
 * **테스트 결과 (Grafana 대시보드)**:
@@ -201,7 +201,7 @@
     * **Node 수**: **7 → 10 → 8** (비용 최적화를 위한 점진적 축소)
 
     <p align="center">
-      <img width="650" alt="Grafana Dashboard Results" src="https://github.com/user-attachments/assets/6dd70aae-8b88-481e-9981-8c9bf5053d62" />
+      <img width="650" height="300" alt="Grafana Dashboard Results" src="https://github.com/user-attachments/assets/6dd70aae-8b88-481e-9981-8c9bf5053d62" />
     </p>
 </details>
 
