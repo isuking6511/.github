@@ -90,48 +90,48 @@
 * **원칙: "절대 신뢰하지 말고, 항상 검증하라" (NIST Zero Trust Architecture 기반)**
     * **서비스 간 상호 인증: mTLS (Mutual TLS)**
         * 클라이언트와 서버가 서로를 신뢰할 수 없는 MSA 환경에서, 모든 서비스가 상호 인증서를 검증하는 mTLS 통신을 기본으로 설정했습니다.
-
-        <img width="1024" height="687" alt="image" src="https://github.com/user-attachments/assets/cef71004-f042-469f-8170-5d9a2d2fbbb8" />
-
+        <p align="center">
+          <img width="800" alt="TLS vs mTLS Communication" src="https://github.com/user-attachments/assets/cef71004-f042-469f-8170-5d9a2d2fbbb8" />
+        </p>
 
     * **mTLS 자동화 구현: SPIRE (SPIFFE Runtime Environment)**
         * 수많은 인증서를 수동으로 관리하는 것은 불가능하므로, SPIRE를 도입하여 워크로드 증명(Attestation) 기반의 신원 확인 및 인증서 발급/갱신을 100% 자동화했습니다.
-
-        <img width="1024" height="1000" alt="image" src="https://github.com/user-attachments/assets/9066d6a4-4674-4074-a3d4-7337d745c2c0" />
-
+        <p align="center">
+          <img width="800" alt="SPIRE Architecture" src="https://github.com/user-attachments/assets/9066d6a4-4674-4074-a3d4-7337d745c2c0" />
+        </p>
 
     * **인증서 탈취 대응: 초단기 수명 인증서 (Short-Lived SVID)**
         * **60초 수명**의 인증서를 **30초** 주기로 자동 갱신하여, 만에 하나 인증서가 탈취되더라도 피해를 최소화하도록 설계했습니다.
-
-        <img width="1024" height="656" alt="image" src="https://github.com/user-attachments/assets/e127d6e8-d7ae-444a-9cc5-bae5b10797fe" />
-
+        <p align="center">
+          <img width="800" alt="Short-Lived SVID Renewal Proof" src="https://github.com/user-attachments/assets/e127d6e8-d7ae-444a-9cc5-bae5b10797fe" />
+        </p>
 
 ---
 
 * **자동화된 외부 위협 대응**:
     * **테스트 시나리오: 글로벌 DDos 공격 및 개인정보 유출**
         * 실제 발생 가능한 대규모 Credential Stuffing 공격 및 개인정보 유출 상황을 시나리오로 설정했습니다.
-
-        <img width="1024" height="701" alt="image" src="https://github.com/user-attachments/assets/a8d7f2c6-47a4-45dd-8f6a-0ec858e66e51" />
-
+        <p align="center">
+          <img width="800" alt="Simulated Data Breach Scenario" src="https://github.com/user-attachments/assets/a8d7f2c6-47a4-45dd-8f6a-0ec858e66e51" />
+        </p>
 
     * **자동화 파이프라인 아키텍처**:
         * 공격 발생 시 사람의 개입 없이 **탐지, 차단, 시각화, 알림, 분석, 리포팅**까지의 전 과정을 자동화하는 파이프라인을 구축했습니다.
-
-        <img width="1024" height="585" alt="image" src="https://github.com/user-attachments/assets/b21fe029-d27e-47c5-a3ed-87f287392acf" />
-
+        <p align="center">
+          <img width="800" alt="Automated Threat Response Pipeline" src="https://github.com/user-attachments/assets/b21fe029-d27e-47c5-a3ed-87f287392acf" />
+        </p>
 
     * **실시간 탐지, 차단, 시각화 및 알림 (100% 자동화)**:
         * **AWS WAF** 규칙 기반 IP 자동 차단, **OpenSearch** 대시보드를 통한 실시간 공격 시각화, **Slack**을 통한 즉각적인 위협 알림이 자동으로 수행됩니다.
-
-        <img width="1023" height="439" alt="image" src="https://github.com/user-attachments/assets/32254136-5039-4a6f-819c-e56f287a5e64" />
-
+        <p align="center">
+          <img width="800" alt="Real-time Detection & Alerting Demo" src="https://github.com/user-attachments/assets/32254136-5039-4a6f-819c-e56f287a5e64" />
+        </p>
 
     * **로그 분석 및 리포팅 자동화**:
         * 차단된 **WAF 로그** (S3 저장) → **Athena** 쿼리를 통한 자동 통계 분석 → **SES**를 통한 일일 보고서 발송
-
-        <img width="1023" height="480" alt="image" src="https://github.com/user-attachments/assets/b6717032-9c6d-4d8d-8d33-fa9f08b03cbe" />
-
+        <p align="center">
+          <img width="800" alt="Automated Log Analysis & Reporting" src="https://github.com/user-attachments/assets/b6717032-9c6d-4d8d-8d33-fa9f08b03cbe" />
+        </p>
 
 ---
 
@@ -139,21 +139,19 @@
     * **SonarQube**: 정적 코드 분석을 통해 소스 코드 레벨의 잠재적 취약점을 사전에 탐지합니다.
     * **Secret Scanner**: Git 커밋 내에 민감 정보(API 키 등)가 노출될 경우, 이를 실시간으로 탐지하고 즉시 키를 비활성화하며 담당자에게 경고합니다.
 
-
- ---
+---
 
 ### ⚡ 성능 (Performance)
 
-* **지능형 오토스케일링**:
-    * **Prometheus → HPA → Karpenter**: `Prometheus` 커스텀 메트릭 기반 Pod 확장(`HPA`), `Karpenter`의 Just-in-Time 방식 Node 프로비저닝 연동
-* **성능 향상 기술**:
-    * **Kafka**: 대규모 주문 요청 비동기 메시지 큐 방식으로 처리, 병목 현상 해소
-    * **VPC Endpoint**: AWS 내부망을 통한 서비스-DB 간 통신 지연 시간 최소화
-    * **AWS Graviton (ARM)**: x86 아키텍처 대비 최대 40% 향상된 가성비의 ARM 프로세서 도입
+* **대규모 트래픽 처리 아키텍처**:
+    * **동적 리소스 확장 (HPA + Karpenter)**: `Prometheus` 커스텀 메트릭 기반의 `HPA`로 Pod를 확장하고, `Karpenter`가 Just-in-Time 방식으로 신규 Node를 프로비저닝하여 어떤 트래픽 부하에도 유연하게 대응합니다.
+    * **비동기 메시지 처리 (Kafka)**: 대규모 주문 및 이벤트 요청을 `Kafka`를 통해 비동기로 처리하여 백엔드 서비스의 병목 현상을 해소하고 안정성을 확보했습니다.
+    * **지연 시간 최적화 (VPC Endpoint)**: AWS 내부 네트워크를 사용하는 `VPC Endpoint`를 통해 서비스와 데이터베이스 간의 통신 지연 시간을 최소화하여 응답 속도를 향상시켰습니다.
+    * **비용 효율적 컴퓨팅 (AWS Graviton)**: x86 아키텍처 대비 최대 40% 향상된 가성비의 ARM 기반 `AWS Graviton` 프로세서를 도입하여 성능과 비용 효율성을 동시에 최적화했습니다.
 
-<br>
+---
 
-## 성능 검증: '올영세일' 시나리오 스트레스 테스트
+## 🔬 성능 검증: '올영세일' 시나리오 스트레스 테스트
 
 > '올영세일'과 같은 최대 부하 상황을 가정하여, 지능형 오토스케일링 시스템이 안정적으로 동작하는지 검증했습니다.
 
@@ -172,7 +170,7 @@
     * **Node 프로비저닝 (Karpenter)**: HPA에 의해 스케줄링 불가능한 Pod 발생 시 `Karpenter`가 신규 Node(7개→10개)를 **Just-in-Time 방식으로 즉시 프로비저닝**
 
 <p align="center">
-  <img width="800" alt="스크린샷 2025-09-04 13 52 53" src="https://github.com/user-attachments/assets/be64eb3d-67c9-4313-a2b5-355df6f53814" />
+  <img width="800" alt="Real-time Scaling Visualization" src="https://github.com/user-attachments/assets/be64eb3d-67c9-4313-a2b5-355df6f53814" />
 </p>
 
 ---
