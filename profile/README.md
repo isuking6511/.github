@@ -20,7 +20,7 @@
 </p>
 <p>
   <img src="https://img.shields.io/badge/GitLab-FC6D26?logo=gitlab&logoColor=white" />
-  <img src="https://img.shields.io/badge/Jenkins-D24939?logo=jenkins&logoColor=white" />
+    <img src="https://img.shields.io/badge/GitLabRunner-FC6D26?logo=gitlab&logoColor=white" />
   <img src="https://img.shields.io/badge/ArgoCD-EF7B4D?logo=argocd&logoColor=white" />
   <img src="https://img.shields.io/badge/Amazon%20ECR-FF9900?logo=amazonelasticcontainerregistry&logoColor=white" />
 </p>
@@ -79,10 +79,27 @@
 
 <details>
 <summary><strong>[Architecture Diagram] 🇯🇵 AWS Tokyo Region (DR Site)</strong></summary>
-<br>
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/323898de-7179-4fde-b4a0-7fde79ba35f5" width="800" />
 </p>
+<br>
+
+### ✅ 주요 구성 요소
+<table border="0"><tr><td align="left">
+<ul>
+<li><strong>🛰️ 컨테이너 이미지 이중화</strong>: 주 리전(서울)의 <strong>ECR</strong> 이미지를 재해 복구 리전(도쿄)으로 자동 복제</li>
+<li><strong>⚡ 워크로드 자동 배포</strong>: <strong>EventBridge</strong>로 이미지 복제를 감지, <strong>Lambda</strong>를 통해 DR 리전의 <strong>ECS</strong>에 최신 버전 자동 재배포</li>
+<li><strong>🔄 신속한 트래픽 전환</strong>: 장애 시 <strong>Route 53 가중치</strong> 조정을 통해 <strong>Warm Standby</strong> 상태의 <strong>Fargate</strong>로 트래픽 즉시 전환</li>
+<li><strong>🌍 데이터 실시간 동기화</strong>: <strong>DynamoDB Global Tables</strong>를 활용하여 서울↔도쿄 리전 간 데이터 양방향 실시간 복제</li>
+<li><strong>🛡️ 데이터 손실 최소화</strong>: 자동 동기화 및 <strong>PITR(시점 복구)</strong> 기능을 통해 RPO(복구 목표 시점) 최소화</li>
+</ul>
+</td></tr></table>
+
+<br>
+
+
+
 </details>
 
 <table border="0"><tr><td align="left">
@@ -228,6 +245,61 @@
 </td></tr></table>
 <br>
 
+<h2 align="center">🚀 CI/CD Pipeline with GitLab, GitLab Runner, and Argo CD</h2>
+<h3 align="center">🔧 GitOps 기반 배포 자동화</h3>
+
+> 💡 **아래 항목을 클릭하면 CI/CD 아키텍처 다이어그램, 파이프라인 설명, 기술 스택 및 환경 변수 설정을 확인할 수 있습니다.**
+
+<details>
+<summary><strong>[Architecture Diagram] 🏗️ CI/CD Pipeline</strong></summary>
+<br>
+
+### 📊 아키텍처 구성
+<img width="843" height="622" alt="image" src="https://github.com/user-attachments/assets/20575bfa-68d8-4b7b-8ebf-d197ef8e871d" />
+</details>
+
+<details>
+<summary><strong>⚙️ CI/CD 파이프라인 설명</strong></summary>
+
+
+#### ✅ CI (Continuous Integration): 빌드 및 통합 자동화
+<table border="0"><tr><td align="left">
+<ul>
+<li><strong>코드 형상 관리</strong>: 개발자가 VPN을 통해 <strong>사설 GitLab</strong>으로 코드를 Push하여 버전 관리</li>
+<li><strong>CI 파이프라인 실행</strong>: <strong>GitLab Runner</strong>가 코드 변경을 감지하여 CI 파이프라인 자동 실행</li>
+<li><strong>컨테이너 이미지 생성</strong>: <strong>Docker 이미지 빌드</strong> 및 버전 태깅 후 <strong>AWS ECR</strong> Private Registry에 Push</li>
+<li><strong>품질/보안 검증</strong>: <strong>SonarQube</strong> 코드 정적 분석 및 보안 취약점 스캔 수행</li>
+<li><strong>배포 준비 완료</strong>: 모든 단계를 통과한 최종 이미지를 <strong>ECR</strong>에 저장하여 배포 가능한 상태로 관리</li>
+</ul>
+</td></tr></table>
+
+#### ✅ CD (Continuous Deployment): 배포 자동화
+<table border="0"><tr><td align="left">
+<ul>
+<li><strong>Manifest 업데이트 자동화</strong>: CI 성공 시 <strong>GitLab Runner</strong>가 배포 Manifest(<code>deployment.yaml</code>)의 이미지 태그를 최신 버전으로 자동 업데이트</li>
+<li><strong>GitOps 기반 배포</strong>: <strong>Argo CD</strong>가 Manifest Repo의 변경 사항을 감지하여 실시간으로 동기화</li>
+<li><strong>운영 환경 자동 배포</strong>: 변경된 Manifest를 기반으로 <strong>운영(Production) EKS 클러스터</strong>에 무중단 자동 배포</li>
+<li><strong>안정적인 배포 전략</strong>: <strong>Staging → Production</strong> 단계별 점진적 배포 및 배포 실패 시 롤백 지원</li>
+</ul>
+</td></tr></table> 
+
+</details>
+
+<details>
+<summary><strong>🛠️ 사용된 주요 기술 스택</strong></summary>
+
+| 구성 요소          | 설명 |
+|-------------------|------|
+| **GitLab**        | 코드 저장 및 CI 트리거 |
+| **GitLab Runner** | Docker-in-Docker 기반 CI, GitOps 자동화 |
+| **AWS ECR**       | Docker 이미지 저장소 |
+| **Argo CD**       | GitOps 기반 쿠버네티스 CD 도구 |
+| **EKS (운영계)**  | 서비스가 실제 배포되는 클러스터 |
+
+</details>
+
+---
+
 <h2 align="center">🛠️ 기술 스택</h2>
 
 | 구분 | 기술 |
@@ -235,7 +307,7 @@
 | **Cloud & Infra** | `AWS` `EC2` `EKS` `RDS Aurora` `S3` `Route53` `Lambda` `VPC` `ECS` `Fargate` `EventBridge` |
 | **Container** | `Docker` `Kubernetes` `Karpenter` `Helm` `HPA` |
 | **Backend** | `Go` `Java (Spring Boot)` `DynamoDB`|
-| **CI/CD & IaC** | `GitLab` `Jenkins` `ArgoCD` `Terraform` `Amazon ECR` |
+| **CI/CD & IaC** | `GitLab` `ArgoCD` `Terraform` `Amazon ECR` |
 | **Security** | `SPIRE (mTLS)` `Falco` `SonarQube` `AWS WAF` `Secret Scanner` `NIST ZTA` |
 | **Monitoring** | `Prometheus` `Grafana` `OpenSearch` `Slack` |
 | **Message Queue** | `Kafka` |
