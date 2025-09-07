@@ -309,7 +309,7 @@
 | **Backend** | `Go` `Java (Spring Boot)` `DynamoDB`|
 | **CI/CD & IaC** | `GitLab` `GitLabRunner` `ArgoCD` `Terraform` `Amazon ECR` |
 | **Security** | `SPIRE (mTLS)` `Falco` `SonarQube` `AWS WAF` `Secret Scanner` `NIST ZTA` |
-| **Monitoring** | `Prometheus` `Grafana` `OpenSearch` `Slack` |
+| **Monitoring** | `Prometheus` `Grafana` `Loki` `Tempo` `` `OpenSearch` `Slack` |
 | **Message Queue** | `Kafka` |
 | **Data Analysis** | `Amazon Athena` `Amazon SES`|
 
