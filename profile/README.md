@@ -307,7 +307,7 @@
 | **Cloud & Infra** | `AWS` `EC2` `EKS` `RDS Aurora` `S3` `Route53` `Lambda` `VPC` `ECS` `Fargate` `EventBridge` |
 | **Container** | `Docker` `Kubernetes` `Karpenter` `Helm` `HPA` |
 | **Backend** | `Go` `Java (Spring Boot)` `DynamoDB`|
-| **CI/CD & IaC** | `GitLab` `ArgoCD` `Terraform` `Amazon ECR` |
+| **CI/CD & IaC** | `GitLab` `GitLabRunner` `ArgoCD` `Terraform` `Amazon ECR` |
 | **Security** | `SPIRE (mTLS)` `Falco` `SonarQube` `AWS WAF` `Secret Scanner` `NIST ZTA` |
 | **Monitoring** | `Prometheus` `Grafana` `OpenSearch` `Slack` |
 | **Message Queue** | `Kafka` |
