@@ -346,40 +346,40 @@
 <summary><strong>📊 대시보드 인사이트</strong></summary>
 <br>
 
-- **서비스/파드별 에러 추이** 및 상위 에러 키워드  
-- **Kafka** 오류 패턴(timeout/rebalance/backoff/disconnect 등)  
-- **Karpenter/HPA** 이벤트(프로비저닝 실패, 드리프트, 노드 변동)  
-- **CrashLoopBackOff / OOMKilled** 발생 현황(네임스페이스·파드별)  
-- **요청 지연/오류 비율**, 네트워크·스토리지 계열 에러(Conn refused/timeout/ENOSPC 등)  
-- **Trace**의 스팬 지연 병목, 다운스트림 서비스 원인 상관 분석
-- 
+**서비스/파드별 에러 추이** 및 상위 에러 키워드  
+**Kafka** 오류 패턴(timeout/rebalance/backoff/disconnect 등)  
+**Karpenter/HPA** 이벤트(프로비저닝 실패, 드리프트, 노드 변동)  
+**CrashLoopBackOff / OOMKilled** 발생 현황(네임스페이스·파드별)  
+**요청 지연/오류 비율**, 네트워크·스토리지 계열 에러(Conn refused/timeout/ENOSPC 등)  
+**Trace**의 스팬 지연 병목, 다운스트림 서비스 원인 상관 분석
+ 
 </details>
 
 <details>
 <summary><strong>🧭 운영 가이드 & 체크</strong></summary>
 <br>
 
-- **접속/노출**: Headlamp는 NLB **internet-facing**(퍼블릭 서브넷 태그/라우팅 확인)  
-- **수집 안정성**: Fluent Bit CrashLoop 시 대부분은 설정 오타/들여쓰기/라벨키 불일치  
-- **보이는 로그 없음**: 시간 범위/라벨 필터 과도 여부, Loki distributor 주소, 네임스페이스 제외 규칙 확인  
-- **알림 소음 제어**: 치명 이벤트(5xx 급증, CrashLoop, Kafka timeout) → 단계적 룰 확장  
-- **장기 보관(옵션)**: 실시간은 Loki, 장기 분석은 Kinesis→S3(with 파티셔닝)로 이원화 가능
+**접속/노출**: Headlamp는 NLB **internet-facing**(퍼블릭 서브넷 태그/라우팅 확인)  
+**수집 안정성**: Fluent Bit CrashLoop 시 대부분은 설정 오타/들여쓰기/라벨키 불일치  
+**보이는 로그 없음**: 시간 범위/라벨 필터 과도 여부, Loki distributor 주소, 네임스페이스 제외 규칙 확인  
+**알림 소음 제어**: 치명 이벤트(5xx 급증, CrashLoop, Kafka timeout) → 단계적 룰 확장  
+**장기 보관(옵션)**: 실시간은 Loki, 장기 분석은 Kinesis→S3(with 파티셔닝)로 이원화 가능
 </details>
 
 <details>
 <summary><strong>💰 비용 최적화 포인트</strong></summary>
 <br>
 
-- **Loki/Tempo**: 라벨 인덱싱/오브젝트 스토리지 백엔드로 저장비 절감  
-- **샘플링**: Tempo는 서비스·엔드포인트 별 샘플 비율 차등(핫패스 높게, 콜드패스 낮게)  
-- **수명주기**: S3 Lifecycle(Std→IA→Glacier) + 보존기간 룰, 불필요 라벨 최소화  
-- **에이전트 단일화**: Promtail 제거, **Fluent Bit로 통합**
+**Loki/Tempo**: 라벨 인덱싱/오브젝트 스토리지 백엔드로 저장비 절감  
+**샘플링**: Tempo는 서비스·엔드포인트 별 샘플 비율 차등(핫패스 높게, 콜드패스 낮게)  
+**수명주기**: S3 Lifecycle(Std→IA→Glacier) + 보존기간 룰, 불필요 라벨 최소화  
+**에이전트 단일화**: Promtail 제거, **Fluent Bit로 통합**
 </details>
 
 **기대 효과**
-- 장애 **탐지→원인분석→조치 제안** 리드타임 단축(알림 자동 요약)  
-- 로그/트레이스 **상관분석**으로 MTTR↓, 재발 방지 액션 명확화  
-- 저장·운영 비용 절감 + 운영 단순화(에이전트/파이프라인 일원화)
+장애 **탐지→원인분석→조치 제안** 리드타임 단축(알림 자동 요약)  
+로그/트레이스 **상관분석**으로 MTTR↓, 재발 방지 액션 명확화  
+저장·운영 비용 절감 + 운영 단순화(에이전트/파이프라인 일원화)
 <h2 align="center">🛠️ 기술 스택</h2>
 
 ---
