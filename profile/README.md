@@ -37,6 +37,12 @@
   <img src="https://img.shields.io/badge/OpenSearch-005EB8?logo=opensearch&logoColor=white" />
   <img src="https://img.shields.io/badge/Amazon%20Athena-7D4099?logo=amazonathena&logoColor=white" />
 </p>
+<p>
+  <img src="https://img.shields.io/badge/Headlamp-326CE5?logo=kubernetes&logoColor=white" />
+  <img src="https://img.shields.io/badge/Amazon%20Bedrock-FF9900?logo=amazonaws&logoColor=white" />
+  <img src="https://img.shields.io/badge/Grafana%20Loki-F46800?logo=grafana&logoColor=white" />
+  <img src="https://img.shields.io/badge/Grafana%20Tempo-F46800?logo=grafana&logoColor=white" />
+</p>
 
 <hr>
 
